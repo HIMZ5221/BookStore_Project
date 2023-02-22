@@ -1,15 +1,18 @@
 package com.BookStore.Service;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Scanner;
 
 import com.BookStore.DAO.UserDAO;
+import com.BookStore.MainMenu.MainMenuPage;
+import com.BookStore.MasterMenu.MasterMenuPage;
 
-public class UserService {
+public class UserService{
 	
 	public static User userInfo = null;
+	//메인메뉴 페이지는 새로 작성합니다.
+	MainMenuPage mainM = new MainMenuPage();
+	MasterMenuPage masterM = new MasterMenuPage();
 	
 	Scanner sc = new Scanner(System.in);
 	
@@ -22,7 +25,12 @@ public class UserService {
 		
 		//UserDAO 로 만든 객체만 사용 가능하다!!!
 		user = UserDAO.getInstance().login(userId);
-
+		//로그인화면 돌아 갈 시, 유저의 객체가 지워지는지 확인할거임. 최종에 뺼겨.
+		if(userInfo == null) {
+			System.out.println("데이터가 없습니다.");
+		}else {
+			System.out.println("데이터가 있는거같은뎁쇼");
+		}
 		if(user != null) {
 			//데이터를 불러,필드에 재정의된 비번과, 유저가 직접입력한 비번을 조회.
 			if(user.getUserPw().equals(userPw)) {
@@ -32,7 +40,8 @@ public class UserService {
 				System.out.println("\n\n\n");
 				//여기서 user의 정보를 유지할 수 있을듯!
 				userInfo = user;
-				
+				System.out.println(userInfo.getUserName());
+				mainM.MainMenu();
 			}else {
 				System.out.println("비밀번호가 틀립니다 !!");
 			}
@@ -44,7 +53,7 @@ public class UserService {
 	
 	
 	//회원가입
-	//회원가입 생일데이터 넣는거 실패. 시간나면 할것.
+	//회원가입
 	//회원가입에서는 userDao클래스의 SignUp/SignUpCompare 메소드를 사용한다.
 	public void SignUp() {
 		userInfo = null;
@@ -171,8 +180,7 @@ public class UserService {
 		
 		//UserDAO 로 만든 객체만 사용 가능하다!!!
 		user = UserDAO.getInstance().MasterLogin();
-
-		if(user != null) {
+		if(user.getUserId().equals(userId)) {
 			//데이터를 불러,필드에 재정의된 비번과, 유저가 직접입력한 비번을 조회.
 			if(user.getUserPw().equals(userPw)) {
 				System.out.println("\n\n\n\n\n\n\n\n");
@@ -182,6 +190,7 @@ public class UserService {
 				//여기서 user의 정보를 유지할 수 있을듯!
 				userInfo = user;
 				
+				masterM.MasterMenu();
 			}else {
 				System.out.println("비밀번호가 틀립니다 !!");
 			}

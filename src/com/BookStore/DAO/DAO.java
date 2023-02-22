@@ -24,6 +24,7 @@ public class DAO {
 			Class.forName(driver);
 			//2. DB 연결
 			conn = DriverManager.getConnection(url,id,pw);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

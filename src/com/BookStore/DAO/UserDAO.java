@@ -108,9 +108,8 @@ public class UserDAO extends DAO{
 		try {
 			conn();
 			String sql = "SELECT user_id,user_pw,user_name FROM bookStore_users WHERE user_id = 'himz5221'";			
-			stmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery(sql);
-
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {
 				mem = new User();
@@ -126,5 +125,8 @@ public class UserDAO extends DAO{
 		}
 		return mem;
 	}
+	
+	//개인정보 조회
+	
 	
 }
