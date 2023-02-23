@@ -2,7 +2,6 @@ package com.BookStore.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.BookStore.Service.User;
 
 public class UserDAO extends DAO{
@@ -35,10 +34,21 @@ public class UserDAO extends DAO{
 			
 			if(rs.next()) {
 				mem = new User();
+				mem.setUserNumber(rs.getInt("user_number"));
+				mem.setUserName(rs.getString("user_name"));
 				mem.setUserId(rs.getString("user_id"));
 				mem.setUserPw(rs.getString("user_pw"));
-				mem.setUserName(rs.getString("user_name"));
-				
+				mem.setUserBirth(rs.getString("user_birth"));
+				mem.setHiredate(rs.getDate("hiredate")); //유심히 지켜볼것
+				mem.setUserTel(rs.getString("user_tel"));
+				mem.setUserAge(rs.getInt("user_age"));
+				mem.setUserMail(rs.getString("user_mail"));
+				mem.setUserMoney(rs.getInt("user_money"));
+//				
+//				mem.setUserId(rs.getString("user_id"));
+//				mem.setUserPw(rs.getString("user_pw"));
+//				mem.setUserName(rs.getString("user_name"));
+//				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -107,15 +117,26 @@ public class UserDAO extends DAO{
 		User mem = null;
 		try {
 			conn();
-			String sql = "SELECT user_id,user_pw,user_name FROM bookStore_users WHERE user_id = 'himz5221'";			
+			String sql = "SELECT * FROM bookStore_users WHERE user_id = 'himz5221'";			
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {
 				mem = new User();
+				mem.setUserNumber(rs.getInt("user_number"));
+				mem.setUserName(rs.getString("user_name"));
 				mem.setUserId(rs.getString("user_id"));
 				mem.setUserPw(rs.getString("user_pw"));
-				mem.setUserName(rs.getString("user_name"));
+				mem.setUserBirth(rs.getString("user_birth"));
+				mem.setHiredate(rs.getDate("hiredate")); //유심히 지켜볼것
+				mem.setUserAge(rs.getInt("user_age"));
+				mem.setUserMail(rs.getString("user_mail"));
+				mem.setUserMoney(rs.getInt("user_money"));
+				
+//				mem = new User();
+//				mem.setUserId(rs.getString("user_id"));
+//				mem.setUserPw(rs.getString("user_pw"));
+//				mem.setUserName(rs.getString("user_name"));
 				
 			}
 		}catch(Exception e) {

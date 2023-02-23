@@ -23,6 +23,7 @@ public class User {
 	private int userAge;
 	private String userMail;
 	private int userMoney;
+	private Date hiredate;
 	
 	public User() {
 		
@@ -83,8 +84,22 @@ public class User {
 		this.userMoney = userMoney;
 	}
 
-	
-	
+	public Date getHiredate() {
+		return hiredate;
+	}
+
+	public void setHiredate(Date hiredate) {
+		this.hiredate = hiredate;
+	}
+
+	@Override
+	public String toString() {
+		return "\t계정고유번호 : \t" + userNumber + "\n\t이름 : \t\t" + userName + "\n\t계정ID : \t\t" + userId
+				+ "\n\t생일 : \t\t" + userBirth + "\n\t전화번호 : \t" + userTel + "\n\t나이 : \t\t" + userAge
+				+ "\n\tMyEmail : \t" + userMail + "\n\t가입일 : \t\t" + hiredate + "\n\t보유머니 : \t" + userMoney+"캐쉬";
+	}
+
+
 	
 	
 }

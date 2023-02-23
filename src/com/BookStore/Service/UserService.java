@@ -16,6 +16,7 @@ public class UserService{
 	
 	Scanner sc = new Scanner(System.in);
 	
+	//유저 로그인
 	public void login() {
 		User user = null;
 		System.out.println("ID를 입력하세요 >");
@@ -27,20 +28,19 @@ public class UserService{
 		user = UserDAO.getInstance().login(userId);
 		//로그인화면 돌아 갈 시, 유저의 객체가 지워지는지 확인할거임. 최종에 뺼겨.
 		if(userInfo == null) {
-			System.out.println("데이터가 없습니다.");
+			System.out.println("로그인 중...");
 		}else {
-			System.out.println("데이터가 있는거같은뎁쇼");
+			System.out.println("기존 로그인된 객체가 존재합니다.");
 		}
 		if(user != null) {
 			//데이터를 불러,필드에 재정의된 비번과, 유저가 직접입력한 비번을 조회.
 			if(user.getUserPw().equals(userPw)) {
-				System.out.println("\n\n\n\n\n\n\n\n");
-				System.out.println("로그인에 성공하였습니다 !");
-				System.out.println(user.getUserName() + "님 환영합니다.🎉🎉");
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				System.out.println("\t로그인에 성공하였습니다 !");
+				System.out.println("\t"+user.getUserName() + "님 환영합니다.🎉🎉");
 				System.out.println("\n\n\n");
 				//여기서 user의 정보를 유지할 수 있을듯!
 				userInfo = user;
-				System.out.println(userInfo.getUserName());
 				mainM.MainMenu();
 			}else {
 				System.out.println("비밀번호가 틀립니다 !!");

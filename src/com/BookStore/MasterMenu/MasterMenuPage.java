@@ -8,10 +8,12 @@ public class MasterMenuPage {
 	
 	Scanner sc = new Scanner(System.in);
 	int menu = 0;
-	boolean run = true;
+	
 	
 	
 	public void MasterMenu() {
+		boolean run = true;
+		
 		while (run) {
 			//첫 콘솔 출력 창이다.. 이 while문에서 모든게 반복되어야만 하며, 최후방 콘솔지역임.
 			//프로그램 종료는 나중에 생각한다.

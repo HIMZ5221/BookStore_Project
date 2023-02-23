@@ -17,6 +17,7 @@ public class ExeApp {
 	}
 	
 	private void run() {
+		System.out.println("\n\n\n\n\n\n\n\n\n");
 		while (run) {
 			//첫 콘솔 출력 창이다.. 이 while문에서 모든게 반복되어야만 하며, 최후방 콘솔지역임.
 			//프로그램 종료는 나중에 생각한다.
