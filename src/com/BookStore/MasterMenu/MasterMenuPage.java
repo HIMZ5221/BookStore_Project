@@ -7,7 +7,7 @@ import com.BookStore.Service.UserService;
 public class MasterMenuPage {
 	
 	Scanner sc = new Scanner(System.in);
-	int menu = 0;
+	String menu = "";
 	
 	
 	
@@ -20,20 +20,20 @@ public class MasterMenuPage {
 			System.out.println("==========================================================");
 			System.out.println("===1.유저조회 | 2.도서등록 | 3.도서삭재 | 4.주문목록조회 | 5.뒤로가기====");
 			System.out.println("==========================================================");
-			menu = Integer.parseInt(sc.nextLine());
+			menu = sc.nextLine();
 			
 			switch (menu) {
-			case 1 :
+			case "1" :
 				
 				break;
-			case 2 :
+			case "2" :
 				
 				
 				break;
-			case 3 : 
+			case "3" : 
 				
 				break;
-			case 4 : 
+			case "4" : 
 				run = false;
 				//로그아웃 전 객체에 등록된 고객데이터 삭제.
 				UserService.userInfo = null;

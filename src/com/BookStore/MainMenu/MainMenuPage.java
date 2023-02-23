@@ -16,7 +16,7 @@ public class MainMenuPage {
 		//일반회원이 로그인했을떄 보는 창임.
 		public void MainMenu() {
 			boolean run = true;
-			int menu = 0;
+			String menu = "";
 			
 			while (run) {
 				//첫 콘솔 출력 창이다.. 이 while문에서 모든게 반복되어야만 하며, 최후방 콘솔지역임.
@@ -29,22 +29,22 @@ public class MainMenuPage {
 				System.out.println("===1.개인정보 | 2.도서조회 | 3.중고장터 | 4.로그아웃===");
 				System.out.println("============================================");
 				System.out.println("이동할 메뉴 번호를 입력하세요 ↓");
-				menu = Integer.parseInt(sc.nextLine());
+				menu = sc.nextLine();
 				
 				switch (menu) {
-				case 1 :
+				case "1" :
 					//개인정보 누를시, 현재 개인정보 상태출력 -> Service에서 제공
 					mainMS.UserPrivacy();
 					break;
-				case 2 :
+				case "2" :
 					//2.도서조회
 					mainBP.UserPrivacy();
 					break;
-				case 3 : 
+				case "3" : 
 					//3.중고장터
 					
 					break;
-				case 4 : 
+				case "4" : 
 					//4.로그아웃
 					run = false;
 					//로그아웃 전 객체에 등록된 고객데이터 삭제.
@@ -56,7 +56,9 @@ public class MainMenuPage {
 					
 					//작동 제대로 안하는듯.. 나중에 다시 보장...
 				default :
+					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					System.out.println("잘못된 입력값 입니다. 다시 입력하세요");
+					System.out.println();
 					break;
 				}
 			}

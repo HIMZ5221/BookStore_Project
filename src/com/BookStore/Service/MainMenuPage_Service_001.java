@@ -12,7 +12,7 @@ public class MainMenuPage_Service_001 {
 	//클래스 만들기가 복잡할듯하여, 비밀번호,tel,mail 변경 기능, 캐쉬충전 기능도 추가합니다.
 	public void UserPrivacy() {
 		boolean run = true;
-		int menu = 0;
+		String menu = "";
 		
 		
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -26,28 +26,33 @@ public class MainMenuPage_Service_001 {
 			System.out.println("===1.비밀번호 변경 | 2.tel변경 | 3.Email변경 | 4.캐쉬충전 | 5.뒤로가기===");
 			System.out.println("=============================================================");
 			System.out.println("이동할 메뉴 번호를 입력하세요 ↓");
-			menu = Integer.parseInt(sc.nextLine());
+			menu = sc.nextLine();
 			switch (menu) {
-			case 1 :
+			case "1" :
 				//1.비밀번호 변경 2.tel변경 3.mail변경 4.캐시충전 -> Service와 DAO에서 제공
 				ChangePw();
 				break;
-			case 2 :
+			case "2" :
 				//tel변경
 				ChangeTel();
 				break;
-			case 3 : 
+			case "3" : 
 				//mail변경
 				ChangeEmail();
 				break;
-			case 4 : 
+			case "4" : 
 				//캐시충전
 				CashCharging();
 				break;
 				
-			case 5 : 
+			case "5" : 
 				run = false;
 				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				break;
+			default :
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				System.out.println("잘못된 입력값 입니다. 다시 입력하세요");
+				System.out.println();
 				break;
 			}
 		}
@@ -59,12 +64,20 @@ public class MainMenuPage_Service_001 {
 		int number = UserService.userInfo.getUserNumber();
 		System.out.println("새로운 비밀번호를 입력하세요 !");
 		String newPw = sc.nextLine();
-		int result = MainMenuPage_DAO_001.getInstance().ChangeEmail("user_pw", newPw, number);
-		if(result > 0 ) {
-			System.out.println("변경완료 !");
-			UserService.userInfo.setUserPw(newPw);
+		System.out.println("비밀번호를 한번더 입력하세요 !");
+		String newPwCheck = sc.nextLine();
+		if(newPw.equals(newPwCheck)) {
+			int result = MainMenuPage_DAO_001.getInstance().ChangeEmail("user_pw", newPw, number);
+			if(result > 0 ) {
+				System.out.println("변경완료 !");
+				UserService.userInfo.setUserPw(newPw);
+			}else {
+				System.out.println("변경실패 !");
+			}
 		}else {
-			System.out.println("변경실패 !");
+			System.out.println(newPw);
+			System.out.println(newPwCheck);
+			System.out.println("새로운 비밀번호가 틀렸습니다 !");
 		}
 	}
 	

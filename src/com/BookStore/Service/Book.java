@@ -57,6 +57,10 @@ public class Book {
 		return "\tISBN : " + bookNumber + "\t책이름 : " + "\""+bookName+"\""
 				+ "\t가격 : " + Price + "\t카테고리 : " + type + "\t저자 : " + author + "\t재고 : " + bookStock;
 	}
+	public String toStringIntroduce() {
+		return "\tISBN : " + bookNumber + "\n\t책이름 : " + "\""+bookName+"\""
+				+ "\n\t가격 : " + Price + "\n\t카테고리 : " + type + "\n\t저자 : " + author + "\n\t재고 : " + bookStock;
+	}
 	
 		
 	

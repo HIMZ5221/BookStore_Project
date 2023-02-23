@@ -2,26 +2,27 @@ package com.BookStore.MainMenu;
 
 import java.util.Scanner;
 
-import com.BookStore.Service.BookService;
+import com.BookStore.Service.BookListService;
 import com.BookStore.Service.UserService;
 
 public class MainBookPage_Servuce_001 {
 	
 	Scanner sc = new Scanner(System.in);
-	BookService bs = new BookService();
+	BookListService bs = new BookListService();
 	
 	//본격적으로 책을 조회하기위한 클래스를 작성한다...
 	public void UserPrivacy() {
 		boolean run = true;
-		int menu = 0;
+		String menu = "";
 		
 		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		System.out.println("      🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞");
-		System.out.println("        ===교보문고 Ebook===");
-		System.out.println("      🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞\n");
-		System.out.println();
+		
 		while (run) {
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			System.out.println("\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞");
+			System.out.println("\n\t\t===교보문고 Ebook===\n");
+			System.out.println("\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞\n");
+			System.out.println();
 			System.out.print("Login : "+UserService.userInfo.getUserName());
 			System.out.println("\tID : "+UserService.userInfo.getUserId());
 			System.out.println();
@@ -30,26 +31,29 @@ public class MainBookPage_Servuce_001 {
 			System.out.println("=============================================================");
 			System.out.println("이동할 메뉴 번호를 입력하세요 ↓");
 									//오늘본 목록 -> 리스트 객체를 들고다니자
-			menu = Integer.parseInt(sc.nextLine());
+			menu = sc.nextLine();
 			switch (menu) {
-			case 1 :
+			case "1" :
 				bs.getBookList();
-				System.out.println("주문을 위한 페이지.. 1. 구매 2. 뒤로가기");
 				break;
-			case 2 :
+			case "2" :
 				//tel변경
 				break;
-			case 3 : 
+			case "3" : 
 				//mail변경
 				break;
-			case 4 : 
+			case "4" : 
 				//캐시충전
 				break;
 				
-			case 5 : 
+			case "5" : 
 				run = false;
 				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-
+				break;
+			default :
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				System.out.println("잘못된 입력값 입니다. 다시 입력하세요");
+				System.out.println();
 				break;
 			}
 		}
