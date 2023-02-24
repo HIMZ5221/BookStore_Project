@@ -98,7 +98,11 @@ public class User {
 				+ "\n\t생일 : \t\t" + userBirth + "\n\t전화번호 : \t" + userTel + "\n\t나이 : \t\t" + userAge
 				+ "\n\tMyEmail : \t" + userMail + "\n\t가입일 : \t\t" + hiredate + "\n\t보유머니 : \t" + userMoney+"캐쉬";
 	}
-
+	public String toStringList() {
+		return  "\n\t계정고유번호 : \t" + userNumber + "\t이름 : \t" + userName + "\t계정ID : \t" + userId
+				+ "\n\t생일 : \t" + userBirth + "\t전화번호 : \t" + userTel + "\n\t나이 : \t" + userAge
+				+ "\tMyEmail : \t" + userMail + "\t가입일 : \t" + hiredate + "\n\t보유머니 : \t" + userMoney+"캐쉬\n"
+				;	}
 
 	
 	

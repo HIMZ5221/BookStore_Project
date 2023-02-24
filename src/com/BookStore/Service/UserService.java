@@ -1,5 +1,6 @@
 package com.BookStore.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ import com.BookStore.MasterMenu.MasterMenuPage;
 public class UserService{
 	
 	public static User userInfo = null;
+	public static List<Book> TodayBookList = new ArrayList<>();
 	//메인메뉴 페이지는 새로 작성합니다.
 	MainMenuPage mainM = new MainMenuPage();
 	MasterMenuPage masterM = new MasterMenuPage();

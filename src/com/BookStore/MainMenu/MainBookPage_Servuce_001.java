@@ -26,9 +26,9 @@ public class MainBookPage_Servuce_001 {
 			System.out.print("Login : "+UserService.userInfo.getUserName());
 			System.out.println("\tID : "+UserService.userInfo.getUserId());
 			System.out.println();
-			System.out.println("=============================================================");
-			System.out.println("===1.도서 전체조회 | 2.카테고리 분류 | 3.오늘본 목록 | 4. | 5.뒤로가기===");
-			System.out.println("=============================================================");
+			System.out.println("====================================================================");
+			System.out.println("===1.도서 전체조회 | 2.카테고리 분류 | 3.오늘본 목록 | 4.나의 책 보기 | 5.뒤로가기===");
+			System.out.println("====================================================================");
 			System.out.println("이동할 메뉴 번호를 입력하세요 ↓");
 									//오늘본 목록 -> 리스트 객체를 들고다니자
 			menu = sc.nextLine();
@@ -37,13 +37,16 @@ public class MainBookPage_Servuce_001 {
 				bs.getBookList();
 				break;
 			case "2" :
-				//tel변경
+				//카테고리 분류
 				break;
 			case "3" : 
-				//mail변경
+				//오늘본 목록
+				bs.TodayBookSee();
+				System.out.println("3번 입력됨.");
 				break;
 			case "4" : 
-				//캐시충전
+				//나의 책 보기
+				bs.MyBook();
 				break;
 				
 			case "5" : 

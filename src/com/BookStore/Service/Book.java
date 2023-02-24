@@ -1,5 +1,7 @@
 package com.BookStore.Service;
 
+import java.sql.Date;
+
 public class Book {
 //	BOOK_NUMBER NOT NULL NUMBER(5)    
 //	BOOK_NAME   NOT NULL VARCHAR2(38) 
@@ -14,8 +16,17 @@ public class Book {
 	private int Price;
 	private String type;
 	private String author;
+	private Date orderDate;
+	private String synopsis;
+
+	//매출테이블을 활용하기위해 추가하였음..
+	private int userNumber;
+	private String userName;
 	
 	
+
+
+
 	public int getBookNumber() {
 		return bookNumber;
 	}
@@ -52,6 +63,33 @@ public class Book {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	public Date getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+	public String getSynopsis() {
+		return synopsis;
+	}
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
+	}
+	public int getUserNumber() {
+		return userNumber;
+	}
+	public void setUserNumber(int userNumber) {
+		this.userNumber = userNumber;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "\tISBN : " + bookNumber + "\t책이름 : " + "\""+bookName+"\""

@@ -25,9 +25,9 @@ public class MainMenuPage {
 				System.out.print("Login : "+UserService.userInfo.getUserName());
 				System.out.println("\tID : "+UserService.userInfo.getUserId());
 				System.out.println();
-				System.out.println("============================================");
-				System.out.println("===1.개인정보 | 2.도서조회 | 3.중고장터 | 4.로그아웃===");
-				System.out.println("============================================");
+				System.out.println("====================================================");
+				System.out.println("===1.개인정보 조회 | 2.교보문고 입장 | 3.중고장터 | 0.로그아웃===");
+				System.out.println("====================================================");
 				System.out.println("이동할 메뉴 번호를 입력하세요 ↓");
 				menu = sc.nextLine();
 				
@@ -44,7 +44,7 @@ public class MainMenuPage {
 					//3.중고장터
 					
 					break;
-				case "4" : 
+				case "0" : 
 					//4.로그아웃
 					run = false;
 					//로그아웃 전 객체에 등록된 고객데이터 삭제.
