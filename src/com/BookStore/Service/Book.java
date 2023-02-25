@@ -100,6 +100,10 @@ public class Book {
 				+ "\n\t가격 : " + Price + "\n\t카테고리 : " + type + "\n\t저자 : " + author + "\n\t재고 : " + bookStock;
 	}
 	
+	public String toStringSalesList() {
+		return "\n\t구매자 : " + userName + "\tISBN : " + bookNumber + "\n\t책이름 : " + "\""+bookName+"\""
+				+ "\n\t가격 : " + Price + "\n\t재고 : " + bookStock;
+	}
 		
 	
 }

@@ -20,7 +20,7 @@ public class MainMenuPage_DAO_001 extends DAO{
 	}
 	
 	
-	//mail변경 입니다 !
+	//유저 데이터 변경 입니다 !
 	public int ChangeEmail(String type, String newDate ,int number) {
 		int result = 0;
 		

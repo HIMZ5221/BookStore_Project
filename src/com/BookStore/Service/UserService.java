@@ -167,7 +167,8 @@ public class UserService{
 		int result = UserDAO.getInstance().SignUp(user);
 		
 		if(result > 0 ) {
-			System.out.println("사원 입력 완료");
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			System.out.println("회원가입 완료 !\n\n");
 		}else {
 			System.out.println("사원 입력 실패");
 		}
