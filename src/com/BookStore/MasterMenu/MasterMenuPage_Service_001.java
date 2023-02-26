@@ -48,10 +48,10 @@ public class MasterMenuPage_Service_001 {
 	public void UserSearch() {
 		MasterMenuPage mp = new MasterMenuPage();
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		System.out.println("=======================================================================\n\n");
-		System.out.println("        원하는 유저의 이름, 고유번호, 핸드폰번호, 이메일, ID 중 키워드를 입력하십시오.");
+		System.out.println("==========================================================================\n\n");
+		System.out.println("        원하는 유저의 [이름, 고유번호, 핸드폰번호, 이메일, ID] 중 키워드를 입력하십시오.");
 		System.out.println("        키워드의 중복된 유저들의 데이터가 출력됩니다.\n\n");
-		System.out.println("=======================================================================\n\n");
+		System.out.println("==========================================================================\n\n");
 		//데이터 입력받음.
 		String searchString = sc.nextLine();
 		//문자열이 숫자인경우, int형식으로도 바꿈
@@ -107,6 +107,7 @@ public class MasterMenuPage_Service_001 {
 		 
 	}
 	
+	//핸드폰 번호 변경전 데이터 비교
 	public void DataTelCompare(String type, int UNumber) {
 		System.out.println("변경할 전화번호 데이터를 입력하세요 ↓"); //유니크
 		String editData = "";
@@ -144,6 +145,7 @@ public class MasterMenuPage_Service_001 {
 		 }
 	}
 	
+	//메일 변경전 데이터 비교
 	public void DataMailCompare(String type, int UNumber) {
 		System.out.println("변경할 이메일을 입력하세요 ↓"); //유니크
 		String editData = "";

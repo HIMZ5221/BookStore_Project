@@ -108,6 +108,7 @@ public class BookDAO extends DAO {
 			while(rs.next()) {
 				mem = new Book();
 				mem.setBookNumber(rs.getInt("book_number"));
+				mem.setBookName(rs.getString("book_name"));
 				mem.setPrice(rs.getInt("price"));
 				mem.setBookStock(rs.getInt("book_stock"));
 				mem.setType(rs.getString("book_type"));

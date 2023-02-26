@@ -118,7 +118,18 @@ public class MainMenuPage_Service_001 {
 		int nowCash = UserService.userInfo.getUserMoney();
 		System.out.println("현재 보유캐쉬 : \t" + nowCash+"캐쉬");
 		System.out.println("충전할 캐쉬값을 입력하세요 !");
-		int plusCash = Integer.parseInt(sc.nextLine());
+		int plusCash = 0 ;
+		boolean sw = true;
+		while(sw) {
+			int value = Integer.parseInt(sc.nextLine());
+			if(value < 10000000) {
+				plusCash = value;
+				sw = false;
+			}else {
+				System.out.println("너무많은 값은 입력할 수 없습니다 !");
+			}
+		}
+		
 		int result = MainMenuPage_DAO_001.getInstance().CashCharging(plusCash, number);
 		
 		if(result > 0 ) {

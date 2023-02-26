@@ -7,6 +7,7 @@ import java.util.Scanner;
 import com.BookStore.DAO.UserDAO;
 import com.BookStore.MainMenu.MainMenuPage;
 import com.BookStore.MasterMenu.MasterMenuPage;
+import com.ConsoleView.ConsoleView;
 
 public class UserService{
 	
@@ -15,6 +16,7 @@ public class UserService{
 	//메인메뉴 페이지는 새로 작성합니다.
 	MainMenuPage mainM = new MainMenuPage();
 	MasterMenuPage masterM = new MasterMenuPage();
+	ConsoleView cv = new ConsoleView();
 	
 	Scanner sc = new Scanner(System.in);
 	
@@ -25,20 +27,20 @@ public class UserService{
 		String userId = sc.nextLine();
 		System.out.println("PW를 입력하세요 >");
 		String userPw = sc.nextLine();
-		System.out.println("로그인 중...");
-
+		System.out.print("로그인 중.");
+		cv.LoginLoading();
+		
 		//UserDAO 로 만든 객체만 사용 가능하다!!!
 		user = UserDAO.getInstance().login(userId);
 		//로그인화면 돌아 갈 시, 유저의 객체가 지워지는지 확인할거임. 최종에 뺼겨.
-		if(userInfo == null) {
-			System.out.println("로그인 중....");
-		}else {
-			System.out.println("기존 로그인된 객체가 존재합니다.\n프로그램에 문제가 있으므로, 관리자에게 문의하십시오.");
+		if(userInfo != null) {
+			System.out.println("기존 로그인된 객체가 존재합니다.\n프로그램에 문제가 있으므로, 즉각 관리자에게 문의하십시오.");
 		}
 		if(user != null) {
+			System.out.println("로그인 완료 !");
 			//데이터를 불러,필드에 재정의된 비번과, 유저가 직접입력한 비번을 조회.
 			if(user.getUserPw().equals(userPw)) {
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				cv.JumpConsole();
 				System.out.println("\t로그인에 성공하였습니다 !");
 				System.out.println("\t"+user.getUserName() + "님 환영합니다.🎉🎉");
 				System.out.println("\n\n\n");
@@ -182,13 +184,14 @@ public class UserService{
 		String userId = sc.nextLine();
 		System.out.println("PW를 입력하세요 >");
 		String userPw = sc.nextLine();
-		
+		System.out.print("로그인 중.");
 		//UserDAO 로 만든 객체만 사용 가능하다!!!
 		user = UserDAO.getInstance().MasterLogin();
+		cv.LoginLoading();
 		if(user.getUserId().equals(userId)) {
 			//데이터를 불러,필드에 재정의된 비번과, 유저가 직접입력한 비번을 조회.
 			if(user.getUserPw().equals(userPw)) {
-				System.out.println("\n\n\n\n\n\n\n\n");
+				cv.JumpConsole();
 				System.out.println("로그인에 성공하였습니다 !");
 				System.out.println(user.getUserName() + "님 환영합니다.🎉🎉");
 				System.out.println("\n\n\n");

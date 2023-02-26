@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.BookStore.DAO.BookDAO;
+import com.ConsoleView.ConsoleView;
 
 public class BookListService {
 	BookDAO instance = new BookDAO();
 	Scanner sc = new Scanner(System.in);
-	
+	ConsoleView cv = new ConsoleView();
 	
 	//전체 책 리스트 조회
 	//책의 자세한 내용 조회
@@ -69,6 +70,7 @@ public class BookListService {
 							int result = instance.BookBuy(bs, user);
 							
 							//반환값이 0 이상이라면.. 구매완료!
+							cv.BuyLoading();
 							if(result > 0) {
 								System.out.println("구매완료!"+result);
 								UserService.userInfo.setUserMoney(user.getUserMoney()-bs.getPrice());
@@ -130,7 +132,7 @@ public class BookListService {
 			}
 			System.out.println("\n보유 캐쉬 : "+ UserService.userInfo.getUserMoney()+"\n");
 			System.out.println("============================");
-			System.out.println("===[숫자]자세히보기 | 0.뒤로가기===");
+			System.out.println("===[ 숫자 ] 자세히보기 | 0.뒤로가기===");
 			System.out.println("============================");
 			menu = sc.nextLine(); //보고싶은 책리스트의 번호를 입력하게됨.
 			int intMenu = Integer.parseInt(menu);

@@ -93,7 +93,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return "\tISBN : " + bookNumber + "\t책이름 : " + "\""+bookName+"\""
-				+ "\t가격 : " + Price + "\t카테고리 : " + type + "\t저자 : " + author + "\t재고 : " + bookStock;
+				+ "\t\t가격 : " + Price + "\t카테고리 : " + type + "\t저자 : " + author + "\t재고 : " + bookStock;
 	}
 	public String toStringIntroduce() {
 		return "\tISBN : " + bookNumber + "\n\t책이름 : " + "\""+bookName+"\""

@@ -21,7 +21,7 @@ public class MasterMenuPage {
 			//첫 콘솔 출력 창이다.. 이 while문에서 모든게 반복되어야만 하며, 최후방 콘솔지역임.
 			//프로그램 종료는 나중에 생각한다.
 			System.out.println("==============================================");
-			System.out.println("===1.유저관리 | 2.도서관리 | 3.판매기록 | 4.뒤로가기====");
+			System.out.println("===1.유저관리 | 2.도서관리 | 3.판매기록 | 0.로그아웃====");
 			System.out.println("==============================================");
 			menu = sc.nextLine();
 			
@@ -36,7 +36,7 @@ public class MasterMenuPage {
 			case "3" : 
 				mms.SalesList();
 				break;
-			case "4" : 
+			case "0" : 
 				run = false;
 				//로그아웃 전 객체에 등록된 고객데이터 삭제.
 				UserService.userInfo = null;
