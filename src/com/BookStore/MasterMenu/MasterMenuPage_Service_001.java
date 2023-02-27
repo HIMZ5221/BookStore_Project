@@ -294,7 +294,7 @@ public class MasterMenuPage_Service_001 {
 					searchInt = Integer.parseInt(searchString);
 				}catch(Exception e) {
 					cv.JumpConsole();
-					System.out.println("문자값 일수 도 있습니다. ! ");
+					System.out.println("문자값 일수 도 있습니다.0 ! ");
 				}
 				sw = false;
 			}catch(Exception e) {
