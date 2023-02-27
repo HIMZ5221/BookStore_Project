@@ -93,10 +93,10 @@ public class User {
 	}
 
 	@Override
-	public String toString() {
-		return "\t계정고유번호 : \t" + userNumber + "\n\t이름 : \t\t" + userName + "\n\t계정ID : \t\t" + userId
-				+ "\n\t생일 : \t\t" + userBirth + "\n\t전화번호 : \t" + userTel + "\n\t나이 : \t\t" + userAge
-				+ "\n\tMyEmail : \t" + userMail + "\n\t가입일 : \t\t" + hiredate + "\n\t보유머니 : \t" + userMoney+"캐쉬";
+	public String toString() { //개인정보페이지
+		return "\t\t계정고유번호 : \t" + userNumber + "\n\t\t이름 : \t\t" + userName + "\n\t\t계정ID : \t\t" + userId
+				+ "\n\t\t생일 : \t\t" + userBirth + "\n\t\t전화번호 : \t" + userTel + "\n\t\t나이 : \t\t" + userAge
+				+ "\n\t\tMyEmail : \t" + userMail + "\n\t\t가입일 : \t\t" + hiredate + "\n\t\t보유머니 : \t" + userMoney+"캐쉬";
 	}
 	public String toStringList() {
 		return  "\n\t계정고유번호 : \t" + userNumber + "\t이름 : \t" + userName + "\t계정ID : \t" + userId

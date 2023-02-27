@@ -89,20 +89,22 @@ public class Book {
 	}
 	
 	
-	
 	@Override
-	public String toString() {
+	public String toString() { //모든 list 출력
 		return "\tISBN : " + bookNumber + "\t책이름 : " + "\""+bookName+"\""
-				+ "\t\t가격 : " + Price + "\t카테고리 : " + type + "\t저자 : " + author + "\t재고 : " + bookStock;
+				+ "\t\t| 가격 : " + Price + "\t카테고리 : " + type + "\t저자 : " + author + "\t재고 : " + bookStock;
 	}
+	
+	
 	public String toStringIntroduce() {
 		return "\tISBN : " + bookNumber + "\n\t책이름 : " + "\""+bookName+"\""
 				+ "\n\t가격 : " + Price + "\n\t카테고리 : " + type + "\n\t저자 : " + author + "\n\t재고 : " + bookStock;
 	}
 	
+	
 	public String toStringSalesList() {
-		return "\n\t구매자 : " + userName + "\tISBN : " + bookNumber + "\n\t책이름 : " + "\""+bookName+"\""
-				+ "\n\t가격 : " + Price + "\n\t재고 : " + bookStock;
+		return "\n\t\t구매자 : " + userName + "\t\tISBN : " + bookNumber + "\n\t\t책이름 : " + "\""+bookName+"\""
+				+ "\t\t가격 : " + Price + "\n";
 	}
 		
 	

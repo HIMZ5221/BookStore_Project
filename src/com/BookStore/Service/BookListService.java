@@ -20,6 +20,7 @@ public class BookListService {
 	//원하는 책 목록과, 리스트만 넣어주면 구매 할 수 있다!!
 	public void bookBuy(int intMenu, List<Book> list) {
 		
+		
 		//menu = sc.nextLine(); //보고싶은 책리스트의 번호를 입력하게됨.
 		//int intMenu = Integer.parseInt(menu);
 
@@ -29,7 +30,7 @@ public class BookListService {
 		if(intMenu <= list.size() && intMenu != 0) {
 			boolean sw = true;
 			
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			cv.JumpConsole();
 			while(sw) {
 				//bs -> 현재 클릭한 책의 객체
 				Book bs = (list.get(intMenu-1));
@@ -77,7 +78,7 @@ public class BookListService {
 								sw = false;
 							}else {
 								//구매 실패 ! result 반환값이 0 이기에...
-								System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n구매실패!\n");
+								cv.JumpConsole();
 							}
 							break;
 						}else {
@@ -85,7 +86,7 @@ public class BookListService {
 						}
 						
 					}else {
-						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n잔액이 부족합니다.\n");
+						cv.JumpConsole();
 					}
 					break;
 					
@@ -93,7 +94,7 @@ public class BookListService {
 					sw = false;
 					break;
 				default :
-					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n잘못 입력하셨습니다..\n");
+					cv.JumpConsole();
 				}
 			}
 					
@@ -111,7 +112,7 @@ public class BookListService {
 	}
 	
 	public void getBookList() {
-
+		
 		String menu = "";
 		boolean run = true;
 		
@@ -121,19 +122,19 @@ public class BookListService {
 			//전체 책을 불러왔음
 			List<Book> list = instance.getBookList();
 			
-			
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			System.out.println("\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖");
-			System.out.println("\n\t\t📕📕📕전체 책 조회 서비스📕📕📕\n");
-			System.out.println("\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖\n");
+			cv.JumpConsole();
+			System.out.println("\t\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖");
+			System.out.println("\n\t\t\t📕📕📕전체 책 조회 서비스📕📕📕\n");
+			System.out.println("\t\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖\n");
 			System.out.println("  ↓ 숫자입력");
 			for (int i = 0; i < list.size(); i++) {
 				System.out.println("[ "+(i+1)+" ] "+list.get(i).toString());
 			}
 			System.out.println("\n보유 캐쉬 : "+ UserService.userInfo.getUserMoney()+"\n");
-			System.out.println("============================");
-			System.out.println("===[ 숫자 ] 자세히보기 | 0.뒤로가기===");
-			System.out.println("============================");
+			System.out.println("\t\t====================================");
+			System.out.println("\t\t===== [ 숫자 ] 자세히보기 | 0.뒤로가기=====");
+			System.out.println("\t\t====================================");
+			System.out.println("\n원하는 책 [번호] 및 뒤로가기 입력 ↓");
 			menu = sc.nextLine(); //보고싶은 책리스트의 번호를 입력하게됨.
 			int intMenu = Integer.parseInt(menu);
 
@@ -141,7 +142,7 @@ public class BookListService {
 				bookBuy(intMenu, list);
 			}else if(intMenu ==0) {
 				run = false;
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				cv.JumpConsole();
 				break;
 			}else {
 				System.out.println("\n잘못 입력했습니다 !");
@@ -149,26 +150,31 @@ public class BookListService {
 			
 		}
 	}
+	
+	
 
 	//오늘본 책 목록
 	public void TodayBookSee() {
 		boolean run = true;
 		String menu = "";
 		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		cv.JumpConsole();
 		while(run) {
 			List<Book> list = UserService.TodayBookList;
 
 			System.out.println("\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖");
+			System.out.println("\t\t최근 조회한 책 LIST ");
 			System.out.println("\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖\n");
 			System.out.println("  ↓ 숫자입력");
 			for (int i = 0; i < list.size(); i++) {
 				System.out.println("[ "+(i+1)+" ] "+list.get(i).toString());
 			}
-			System.out.println("\n보유 캐쉬 : "+ UserService.userInfo.getUserMoney()+"\n");
-			System.out.println("============================");
-			System.out.println("===[숫자]자세히보기 | 0.뒤로가기===");
-			System.out.println("============================");
+			System.out.println("\n\t\t보유 캐쉬 : "+ UserService.userInfo.getUserMoney()+"\n");
+			System.out.println("\t\t================================");
+			System.out.println("\t\t=== [ 숫자 ] 자세히보기 | 0.뒤로가기===");
+			System.out.println("\t\t================================\n\n");
+			System.out.println("\n원하는 책 [번호] 및 뒤로가기 입력 ↓");
+
 			menu = sc.nextLine(); //보고싶은 책리스트의 번호를 입력하게됨.
 			int intMenu = Integer.parseInt(menu);
 
@@ -177,7 +183,7 @@ public class BookListService {
 				bookBuy(intMenu, list);
 			}else if(intMenu ==0) {
 				run = false;
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				cv.JumpConsole();
 				break;
 			}else {
 				System.out.println("\n잘못 입력했습니다 !");
@@ -189,20 +195,23 @@ public class BookListService {
 
 	//나의 책 조회 구매하는것이 아님 ! 보기만 할것이다
 	public void MyBook() {
+		
 		String menu = "";
 		boolean run = true;
 		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		cv.JumpConsole();
 		while(run) {
 
 			List<Book> list = instance.MyBook();
 				for (int i = 0; i < list.size(); i++) {
 					System.out.println("[ "+(i+1)+" ] "+list.get(i).toString());
 				}
-			System.out.println("\n보유 캐쉬 : "+ UserService.userInfo.getUserMoney()+"\n");
-			System.out.println("============================");
-			System.out.println("===[숫자]자세히보기 | 0.뒤로가기===");
-			System.out.println("============================");
+			System.out.println("\n\t\t보유 캐쉬 : "+ UserService.userInfo.getUserMoney()+"\n");
+			System.out.println("\t\t============================");
+			System.out.println("\t\t===[숫자]자세히보기 | 0.뒤로가기===");
+			System.out.println("\t\t============================");
+			System.out.println("\n원하는 책 [번호] 및 뒤로가기 입력 ↓");
+
 			menu = sc.nextLine(); //보고싶은 책리스트의 번호를 입력하게됨.
 			int intMenu = Integer.parseInt(menu);
 			System.out.println("수정이 필요한 지역 입니다 ! 0을 눌러 돌아가십시오 ! !");
@@ -213,7 +222,7 @@ public class BookListService {
 				//bookBuy(intMenu, list);
 			}else if(intMenu ==0) {
 				run = false;
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				cv.JumpConsole();
 				break;
 			}else {
 				System.out.println("\n잘못 입력했습니다 !");

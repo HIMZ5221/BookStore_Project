@@ -3,6 +3,7 @@ package com.BookStore.exe;
 import java.util.Scanner;
 
 import com.BookStore.Service.UserService;
+import com.ConsoleView.ConsoleView;
 
 public class ExeApp {
 	
@@ -17,13 +18,19 @@ public class ExeApp {
 	}
 	
 	private void run() {
+		ConsoleView cv = new ConsoleView();
+		
 		System.out.println("\n\n\n\n\n\n\n\n\n");
 		while (run) {
 			//첫 콘솔 출력 창이다.. 이 while문에서 모든게 반복되어야만 하며, 최후방 콘솔지역임.
 			//프로그램 종료는 나중에 생각한다.
-			System.out.println("================================================");
-			System.out.println("===1.로그인 | 2.회원가입 | 3.관리자로그인 | 4.프로그램종료===");
-			System.out.println("================================================");
+			
+			System.out.println("\t🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓");
+			System.out.println("\t             Welcome to Ebookstore");
+			System.out.println("\t🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓🎓\n\n");
+			System.out.println("\t================================================");
+			System.out.println("\t===1.로그인 | 2.회원가입 | 3.관리자로그인 | 4.프로그램종료===");
+			System.out.println("\t================================================\n\n");
 			menu = sc.nextLine();
 			
 			switch (menu) {
@@ -44,7 +51,7 @@ public class ExeApp {
 				System.out.println("死 프로그램 사망 死");
 				break;
 			default :
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				cv.JumpConsole();
 				System.out.println("잘못된 입력값 입니다. 다시 입력하세요");
 				System.out.println();
 				break;

@@ -3,6 +3,7 @@ package com.BookStore.Service;
 import java.util.Scanner;
 
 import com.BookStore.DAO.MainMenuPage_DAO_001;
+import com.ConsoleView.ConsoleView;
 
 public class MainMenuPage_Service_001 {
 	
@@ -11,21 +12,21 @@ public class MainMenuPage_Service_001 {
 	//개인정보 조회 페이지... 로그인중인 userInfo의 필드정보를 출력합시다 실시
 	//클래스 만들기가 복잡할듯하여, 비밀번호,tel,mail 변경 기능, 캐쉬충전 기능도 추가합니다.
 	public void UserPrivacy() {
+		ConsoleView cv = new ConsoleView();
 		boolean run = true;
 		String menu = "";
 		
-		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		System.out.println("           🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞");
-		System.out.println("             ===개인정보 페이지===");
-		System.out.println("           🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞\n");
+		cv.JumpConsole();
+		System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞");
+		System.out.println("\t\t\t===개인정보 페이지===");
+		System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞\n");
 		System.out.println(UserService.userInfo.toString());
 		System.out.println();
 		while (run) {
-			System.out.println("=============================================================");
-			System.out.println("===1.비밀번호 변경 | 2.tel변경 | 3.Email변경 | 4.캐쉬충전 | 5.뒤로가기===");
-			System.out.println("=============================================================");
-			System.out.println("이동할 메뉴 번호를 입력하세요 ↓");
+			System.out.println("\t=============================================================");
+			System.out.println("\t===1.비밀번호 변경 | 2.tel변경 | 3.Email변경 | 4.캐쉬충전 | 0.뒤로가기===");
+			System.out.println("\t=============================================================");
+			System.out.println("\n이동할 메뉴 번호를 입력하세요 ↓\n\n");
 			menu = sc.nextLine();
 			switch (menu) {
 			case "1" :
@@ -45,12 +46,11 @@ public class MainMenuPage_Service_001 {
 				CashCharging();
 				break;
 				
-			case "5" : 
+			case "0" : 
 				run = false;
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				cv.JumpConsole();
 				break;
 			default :
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				System.out.println("잘못된 입력값 입니다. 다시 입력하세요");
 				System.out.println();
 				break;
@@ -61,6 +61,7 @@ public class MainMenuPage_Service_001 {
 	
 	//비밀번호 변경..
 	public void ChangePw() {
+		ConsoleView cv = new ConsoleView();
 		int number = UserService.userInfo.getUserNumber();
 		System.out.println("새로운 비밀번호를 입력하세요 !");
 		String newPw = sc.nextLine();
@@ -69,50 +70,76 @@ public class MainMenuPage_Service_001 {
 		if(newPw.equals(newPwCheck)) {
 			int result = MainMenuPage_DAO_001.getInstance().ChangeEmail("user_pw", newPw, number);
 			if(result > 0 ) {
-				System.out.println("변경완료 !");
 				UserService.userInfo.setUserPw(newPw);
+				cv.JumpConsole();
+				cv.UserInfoConsole();
+				System.out.println(UserService.userInfo.toString());
+				System.out.println("\n수정완료 !");
 			}else {
-				System.out.println("변경실패 !");
+				cv.JumpConsole();
+				cv.UserInfoConsole();
+				System.out.println(UserService.userInfo.toString());
+				System.out.println("\n수정실패 !");
 			}
 		}else {
 			System.out.println(newPw);
 			System.out.println(newPwCheck);
-			System.out.println("새로운 비밀번호가 틀렸습니다 !");
+			cv.JumpConsole();
+			cv.UserInfoConsole();
+			System.out.println(UserService.userInfo.toString());
+			System.out.println("\n비밀번호가 일치하지 않습니다 !");
 		}
 	}
 	
 	//tel 변경...
 	public void ChangeTel() {
+		ConsoleView cv = new ConsoleView();
+		
 		int number = UserService.userInfo.getUserNumber();
 		System.out.println("현재 전화번호 : \t" + UserService.userInfo.getUserTel());
 		System.out.println("변경할 전화번호를 입력하세요 !");
 		String newTel = sc.nextLine();
 		int result = MainMenuPage_DAO_001.getInstance().ChangeEmail("user_Tel", newTel, number);
 		if(result > 0 ) {
-			System.out.println("변경완료 !");
-			UserService.userInfo.setUserMail(newTel);
+			UserService.userInfo.setUserTel(newTel);
+			cv.JumpConsole();
+			cv.UserInfoConsole();
+			System.out.println(UserService.userInfo.toString());
+			System.out.println("\n수정완료 !");
 		}else {
-			System.out.println("변경실패 !");
+			cv.JumpConsole();
+			cv.UserInfoConsole();
+			System.out.println(UserService.userInfo.toString());
+			System.out.println("\n수정실패 !");
 		}
 	}
 	
 	//mail 변경...
 	public void ChangeEmail() {
+		ConsoleView cv = new ConsoleView();
+		
 		int number = UserService.userInfo.getUserNumber();
 		System.out.println("현재 EMAIl : \t" + UserService.userInfo.getUserMail());
 		System.out.println("변경할 EMAIL을 입력하세요 !");
 		String newMail = sc.nextLine();
 		int result = MainMenuPage_DAO_001.getInstance().ChangeEmail("user_mail", newMail, number);
 		if(result > 0 ) {
-			System.out.println("변경완료 !");
 			UserService.userInfo.setUserMail(newMail);
+			cv.JumpConsole();
+			cv.UserInfoConsole();
+			System.out.println(UserService.userInfo.toString());
+			System.out.println("\n수정완료 !");
 		}else {
-			System.out.println("변경실패 !");
+			cv.JumpConsole();
+			cv.UserInfoConsole();
+			System.out.println(UserService.userInfo.toString());
+			System.out.println("\n수정실패 !");
 		}
 	}//메소드 끝
 	
 	//캐시충전..
 	public void CashCharging() {
+		ConsoleView cv = new ConsoleView();
 		int number = UserService.userInfo.getUserNumber();
 		//현재 보유 캐쉬
 		int nowCash = UserService.userInfo.getUserMoney();
@@ -133,9 +160,15 @@ public class MainMenuPage_Service_001 {
 		int result = MainMenuPage_DAO_001.getInstance().CashCharging(plusCash, number);
 		
 		if(result > 0 ) {
+			cv.JumpConsole();
+			cv.UserInfoConsole();
+			System.out.println(UserService.userInfo.toString());
 			System.out.println("충전완료 !");
 			UserService.userInfo.setUserMoney(nowCash + plusCash);
 		}else {
+			cv.JumpConsole();
+			cv.UserInfoConsole();
+			System.out.println(UserService.userInfo.toString());
 			System.out.println("충전실패 !");
 		}
 	}//메소드 끝

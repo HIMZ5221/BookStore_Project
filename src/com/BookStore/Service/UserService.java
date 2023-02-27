@@ -14,14 +14,15 @@ public class UserService{
 	public static User userInfo = null;
 	public static List<Book> TodayBookList = new ArrayList<>();
 	//메인메뉴 페이지는 새로 작성합니다.
-	MainMenuPage mainM = new MainMenuPage();
-	MasterMenuPage masterM = new MasterMenuPage();
-	ConsoleView cv = new ConsoleView();
 	
 	Scanner sc = new Scanner(System.in);
 	
 	//유저 로그인
 	public void login() {
+		MainMenuPage mainM = new MainMenuPage();
+		ConsoleView cv = new ConsoleView();
+
+
 		User user = null;
 		System.out.println("ID를 입력하세요 >");
 		String userId = sc.nextLine();
@@ -41,17 +42,18 @@ public class UserService{
 			//데이터를 불러,필드에 재정의된 비번과, 유저가 직접입력한 비번을 조회.
 			if(user.getUserPw().equals(userPw)) {
 				cv.JumpConsole();
-				System.out.println("\t로그인에 성공하였습니다 !");
-				System.out.println("\t"+user.getUserName() + "님 환영합니다.🎉🎉");
+				System.out.println("\t\t\t로그인에 성공하였습니다 !");
+				System.out.println("\t\t\t\""+user.getUserName() + "\" 님 환영합니다.🎉🎉");
 				System.out.println("\n\n\n");
 				//여기서 user의 정보를 유지할 수 있을듯!
 				userInfo = user;
 				mainM.MainMenu();
 			}else {
+				cv.JumpConsole();
 				System.out.println("비밀번호가 틀립니다 !!");
 			}
 		}else {
-			System.out.println("\n");
+			cv.JumpConsole();
 			System.out.println("없는 계정입니다 ! ");
 		}
 	}
@@ -62,15 +64,17 @@ public class UserService{
 	//회원가입
 	//회원가입에서는 userDao클래스의 SignUp/SignUpCompare 메소드를 사용한다.
 	public void SignUp() {
+		ConsoleView cv = new ConsoleView();
 		userInfo = null;
 		User user = new User();
 		boolean sw = false;
+		
 		System.out.println("이름 | ID | PW | 생일 | 전화번호 | 나이 | 이메일");
 		System.out.println("위 정보가 필요합니다 !");
-		System.out.println("이름을 입력하세용 >");
+		System.out.println("\n이름을 입력하세용 ↓");
 		user.setUserName(sc.nextLine()); 
 //==============================================================			
-		System.out.println("사용할 ID를 입력하쇼 >"); //유니크
+		System.out.println("\n사용할 ID를 입력하쇼 ↓"); //유니크
 		String userId = "";
 		
 		do{
@@ -81,7 +85,7 @@ public class UserService{
 			//동일한 데이터가 존재 할 시, 배열에 true가 들어가게 됨.
 			for(int i=0; i<list.size(); i++) {
 				if(list.get(i).getUserId().equals(value)) {
-					System.out.println("이미 존재하는 ID입니다. 다시 입력하세요");
+					System.out.println("\n이미 존재하는 ID입니다. 다시 입력하세요");
 					swarr[i] = true;
 				}else {
 					swarr[i] = false;
@@ -98,14 +102,28 @@ public class UserService{
 		}while(sw);
 		user.setUserId(userId);
 //==============================================================		
-		System.out.println("사용할 PW를 입력하쇼>");
-		user.setUserPw(sc.nextLine());
+		boolean pwsw = true;
+		while(pwsw) {
+			System.out.println("\n사용할 PW를 입력하세요 ↓");
+			String pw1 = sc.nextLine();
+			System.out.println("\n비밀번호를 한번 더 입력하세요 ↓");
+			String pw2 = sc.nextLine();
+			System.out.println(pw1 + pw2);
+			if(pw1.equals(pw2)) {
+				user.setUserPw(pw1);
+				System.out.println("\n비밀번호가 일치합니다 !");
+				pwsw = false;
+			}else {
+				System.out.println("\n비밀번호가 서로 다릅니다 !");
+			}
+			
+		}
 //==============================================================
-		System.out.println("생일을 입력하세요 \n 예시). 19980305 >");
+		System.out.println("\n생일을 입력하세요 \n 예시). 19980305 ↓");
 
 		user.setUserBirth(sc.nextLine());
 //==============================================================			
-		System.out.println("전화번호를 입력하세요 \n 기호를 제외한 숫자만 입력하세요 >"); //유니크
+		System.out.println("\n전화번호를 입력하세요 \n 기호를 제외한 숫자만 입력하세요 ↓"); //유니크
 		String userTel = "";
 		
 		do{
@@ -116,7 +134,7 @@ public class UserService{
 			//동일한 데이터가 존재 할 시, 배열에 true가 들어가게 됨.
 			for(int i=0; i<list.size(); i++) {
 				if(list.get(i).getUserTel().equals(value)) {
-					System.out.println("이미 존재하는 전화번호 입니다. 다시 입력하세요");
+					System.out.println("\n이미 존재하는 전화번호 입니다. 다시 입력하세요 ↓");
 					swarr[i] = true;
 				}else {
 					swarr[i] = false;
@@ -134,10 +152,10 @@ public class UserService{
 		user.setUserTel(userTel);
 		
 //==============================================================			
-		System.out.println("나이를 입력하세요 >");
+		System.out.println("\n나이를 입력하세요 ↓");
 		user.setUserAge(Integer.parseInt(sc.nextLine()));
 //==============================================================	
-		System.out.println("이메일을 입력하세요 >"); //유니크
+		System.out.println("\n이메일을 입력하세요 ↓"); //유니크
 		String userMail = "";
 			
 		do{
@@ -148,7 +166,7 @@ public class UserService{
 			//동일한 데이터가 존재 할 시, 배열에 true가 들어가게 됨.
 			for(int i=0; i<list.size(); i++) {
 				if(list.get(i).getUserMail().equals(value)) {
-					System.out.println("이미 존재하는 EMAIL 입니다. 다시 입력하세요");
+					System.out.println("\n이미 존재하는 EMAIL 입니다. 다시 입력하세요 ↓");
 					swarr[i] = true;
 				}else {
 					swarr[i] = false;
@@ -169,20 +187,25 @@ public class UserService{
 		int result = UserDAO.getInstance().SignUp(user);
 		
 		if(result > 0 ) {
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			cv.RegistrationSuccess();
+			cv.JumpConsole();
 			System.out.println("회원가입 완료 !\n\n");
 		}else {
-			System.out.println("사원 입력 실패");
+			System.out.println("회원가입 실패");
 		}
 	} //메소드 끝
 		
 
 	//관리자 로그인
 	public void MasterLogin() {
+		MasterMenuPage masterM = new MasterMenuPage();
+		ConsoleView cv = new ConsoleView();
+
+
 		User user = null;
-		System.out.println("ID를 입력하세요 >");
+		System.out.println("ID를 입력하세요 ↓");
 		String userId = sc.nextLine();
-		System.out.println("PW를 입력하세요 >");
+		System.out.println("PW를 입력하세요 ↓");
 		String userPw = sc.nextLine();
 		System.out.print("로그인 중.");
 		//UserDAO 로 만든 객체만 사용 가능하다!!!
@@ -192,14 +215,15 @@ public class UserService{
 			//데이터를 불러,필드에 재정의된 비번과, 유저가 직접입력한 비번을 조회.
 			if(user.getUserPw().equals(userPw)) {
 				cv.JumpConsole();
-				System.out.println("로그인에 성공하였습니다 !");
-				System.out.println(user.getUserName() + "님 환영합니다.🎉🎉");
+				System.out.println("\t\t\t로그인에 성공하였습니다 !");
+				System.out.println("\t\t\t\""+user.getUserName() + "\" 님 환영합니다.🎉🎉");
 				System.out.println("\n\n\n");
 				//여기서 user의 정보를 유지할 수 있을듯!
 				userInfo = user;
 				
 				masterM.MasterMenu();
 			}else {
+				cv.JumpConsole();
 				System.out.println("비밀번호가 틀립니다 !!");
 			}
 		}else {
