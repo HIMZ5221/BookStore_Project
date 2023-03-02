@@ -68,17 +68,7 @@ public class BookDAO extends DAO {
 			pstmt.setInt(6, book.getBookStock());
 			pstmt.setString(7, book.getType());
 			pstmt.setString(8, book.getAuthor());
-			result += pstmt.executeUpdate();
-//			USER_NUMBER    NUMBER(5)    
-//			USER_NAME      VARCHAR2(25) 
-//			BOOK_NUMBER    NUMBER(5)    
-//			BOOK_NAME      VARCHAR2(38) 
-//			PRICE          NUMBER(10)   
-			
-//			BOOK_STOCK     NUMBER(5)    
-//			BOOK_TYPE      VARCHAR2(20) 
-//			BOOK_AUTHOR    VARCHAR2(20) 
-//			ODER_DATE      DATE            
+			result += pstmt.executeUpdate();          
 			
 			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
@@ -123,16 +113,6 @@ public class BookDAO extends DAO {
 			pstmt.setString(7, book.getType());
 			pstmt.setString(8, book.getAuthor());
 			result += pstmt.executeUpdate();
-//			USER_NUMBER    NUMBER(5)    
-//			USER_NAME      VARCHAR2(25) 
-//			BOOK_NUMBER    NUMBER(5)    
-//			BOOK_NAME      VARCHAR2(38) 
-//			PRICE          NUMBER(10)   
-			
-//			BOOK_STOCK     NUMBER(5)    
-//			BOOK_TYPE      VARCHAR2(20) 
-//			BOOK_AUTHOR    VARCHAR2(20) 
-//			ODER_DATE      DATE            
 			
 			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
@@ -185,9 +165,6 @@ public class BookDAO extends DAO {
 		try {
 			conn();
 			String sql = "select book_type FROM BookStore_books group by book_type ";
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, UserService.userInfo.getUserNumber());
-//			rs = pstmt.executeQuery();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {

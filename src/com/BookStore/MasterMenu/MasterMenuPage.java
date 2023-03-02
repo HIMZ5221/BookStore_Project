@@ -9,30 +9,29 @@ import com.BookStore.Service.Book;
 import com.BookStore.Service.BookListService;
 import com.BookStore.Service.User;
 import com.BookStore.Service.UserService;
+import com.ConsoleView.ConsoleView;
 
 public class MasterMenuPage {
 	
 	Scanner sc = new Scanner(System.in);
 	String menu = "";
 
-	
-	
 	public void MasterMenu() {
 		MasterMenuPage_Service_001 mms = new MasterMenuPage_Service_001();
-
+		ConsoleView cv = new ConsoleView();
 
 		boolean run = true;
-		System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞");
-		System.out.println("\t\t\t===[ 관리자 ] 전용 페이지===");
-		System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞\n");
-		System.out.println(UserService.userInfo.toString());
-		System.out.println();
 		while (run) {
+			System.out.println("\t\t▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣\n");
+			System.out.println("\t\t\t===[ 관리자 ] 전용 페이지===\n");
+			System.out.println("\t\t▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣\n");
+			System.out.println(UserService.userInfo.toString());
+			System.out.println();
 			//첫 콘솔 출력 창이다.. 이 while문에서 모든게 반복되어야만 하며, 최후방 콘솔지역임.
 			//프로그램 종료는 나중에 생각한다.
-			System.out.println("\t  ===================================================");
+			System.out.println("\t  ===============================================================");
 			System.out.println("\t  ===1.유저관리 & 조회 | 2.도서관리 | 3.판매기록 | 0.로그아웃====");
-			System.out.println("\t  ===================================================");
+			System.out.println("\t  ===============================================================");
 			System.out.println("\n이동할 메뉴 번호를 입력하세요 ↓\n\n");
 			menu = sc.nextLine();
 			
@@ -51,7 +50,11 @@ public class MasterMenuPage {
 				//로그아웃 전 객체에 등록된 고객데이터 삭제.
 				UserService.userInfo = null;
 				System.out.println("유저의 객체값은 null 입니다.");
+				cv.JumpConsole();
 				break;
+			default :
+				cv.JumpConsole();
+				System.out.println("값을 잘못 입력했습니다!");
 			}
 			
 			
@@ -61,7 +64,7 @@ public class MasterMenuPage {
 	public void UserManagement() {
 		UserService us = new UserService();
 		MasterMenuPage_Service_001 mms = new MasterMenuPage_Service_001();
-
+		ConsoleView cv = new ConsoleView();
 
 		boolean run = true;
 		
@@ -70,9 +73,9 @@ public class MasterMenuPage {
 			mms.ViewAllUser();
 			System.out.println("\t▶※상단 정보는 프로그램에 등록된 전체 유저를 출력합니다.");
 			System.out.println("\t   등록 및 수정을 원하면 하단을 참조하세요.\n");
-			System.out.println("===================================================");
+			System.out.println("===============================================================");
 			System.out.println("===1.유저등록 | 2.유저삭제 | 3.유저검색 & 수정 | 0.뒤로가기====");
-			System.out.println("===================================================");
+			System.out.println("===============================================================");
 			menu = sc.nextLine();
 			
 			switch (menu) {
@@ -88,18 +91,17 @@ public class MasterMenuPage {
 				mms.UserSearch();
 				break;
 			case "0" : 
+				cv.JumpConsole();
 				run = false;
 				break;
 			}
-			
-			
 		}
 	}
 	
 	//검색한 유저의 정보 수정
 	public void UserSearchAndEdit(List<User> list) {
 		MasterMenuPage_Service_001 mms = new MasterMenuPage_Service_001();
-
+		ConsoleView cv = new ConsoleView();
 		
 		boolean run = true;
 		
@@ -161,16 +163,16 @@ public class MasterMenuPage {
 				break;
 			case "0" : 
 				run = false;
+				cv.JumpConsole();
 				break;
 			}
-			
-			
 		}
 	}
 	
 	//도서 관리
 	public void BookManagement() {
 		MasterMenuPage_Service_001 mms = new MasterMenuPage_Service_001();
+		ConsoleView cv = new ConsoleView();
 		
 		boolean run = true;
 		
@@ -179,9 +181,9 @@ public class MasterMenuPage {
 			mms.getBookList();
 			System.out.println("\t▶※상단 정보는 프로그램에 등록된 전체 도서를 출력합니다.");
 			System.out.println("\t   등록 및 수정을 원하면 하단을 참조하세요.\n");
-			System.out.println("===================================================");
+			System.out.println("===============================================================");
 			System.out.println("===1.도서등록 | 2.도서삭제 | 3.도서검색 & 수정 | 0.뒤로가기====");
-			System.out.println("===================================================");
+			System.out.println("===============================================================");
 			menu = sc.nextLine();
 			
 			switch (menu) {
@@ -198,6 +200,7 @@ public class MasterMenuPage {
 				break;
 			case "0" : 
 				run = false;
+				cv.JumpConsole();
 				break;
 			}
 			
@@ -209,7 +212,6 @@ public class MasterMenuPage {
 	public void BookSearchAndEdit(List<Book> list) {
 		MasterMenuPage_Service_001 mms = new MasterMenuPage_Service_001();
 
-		
 		boolean run = true;
 		
 		System.out.println("수정을 원하는 도서의 번호를 입력하십시오.");
@@ -272,11 +274,6 @@ public class MasterMenuPage {
 				run = false;
 				break;
 			}
-			
-			
 		}
 	}
-	
-
-	
 }

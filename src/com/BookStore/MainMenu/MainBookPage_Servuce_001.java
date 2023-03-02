@@ -24,17 +24,17 @@ public class MainBookPage_Servuce_001 {
 		
 		while (run) {
 			cv.JumpConsole();
-			System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞");
-			System.out.println("\n\t\t\t===교보문고 Ebook===\n");
-			System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞\n");
+			System.out.println("\t\t▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣\n");
+			System.out.println("\t\t\t===교보문고 Ebook===\n");
+			System.out.println("\t\t▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣\n");
 			System.out.println();
 			System.out.print("\t\tLogin : "+UserService.userInfo.getUserName());
 			System.out.print("\tID : "+UserService.userInfo.getUserId());
-			System.out.println("\tMONEY : "+UserService.userInfo.getUserMoney()+"캐쉬");
+			System.out.println("\t  MONEY : "+UserService.userInfo.getUserMoney()+"캐쉬");
 			System.out.println();
-			System.out.println("\t====================================================================");
+			System.out.println("\t=====================================================================================");
 			System.out.println("\t===1.도서 전체조회 | 2.카테고리 분류 | 3.오늘본 목록 | 4.나의 책 보기 | 0.뒤로가기===");
-			System.out.println("\t====================================================================");
+			System.out.println("\t=====================================================================================");
 			System.out.println("\n이동할 메뉴 번호를 입력하세요 ↓\n\n");
 									//오늘본 목록 -> 리스트 객체를 들고다니자
 			menu = sc.nextLine();
@@ -79,27 +79,33 @@ public class MainBookPage_Servuce_001 {
 		while(run) {
 			List<Book> list = instance.GroupBookList();
 
-//			System.out.println("\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖");
-//			System.out.println("\t\t최근 조회한 책 LIST ");
-//			System.out.println("\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖\n");
-//			System.out.println("  ↓ 숫자입력");
 			System.out.println("\n\t\t보유 캐쉬 : "+ UserService.userInfo.getUserMoney()+"\n");
-			System.out.print("\t\t=======");
+			System.out.print("\t\t==========");
 			for (int i = 0; i < list.size(); i++) {
-				System.out.print("=========");
+				System.out.print("===========");
 			}
 			System.out.print("\n\t\t===");
 			for (int i = 0; i < list.size(); i++) {
-				System.out.print("[ "+(i+1)+" ]"+list.get(i).getType()+", ");
+				System.out.print("[ "+(i+1)+" ]"+list.get(i).getType()+"| ");
 			}
-			System.out.print("===\n\t\t=======");
+			System.out.print("===\n\t\t==========");
 			for (int i = 0; i < list.size(); i++) {
-				System.out.print("=========");
+				System.out.print("===========");
 			}
-			System.out.println("\n\n원하는 책 [번호] 및 뒤로가기 입력 ↓");
-
-			int select = Integer.parseInt(sc.nextLine());
+			System.out.println("\n\n원하는 책 [번호] 및 뒤로가기 입력 ↓\n\n");
 			
+			int select = 0;
+			boolean sw = true;
+			while(sw) {
+				select = Integer.parseInt(sc.nextLine());
+				if(select <= list.size() && select >0) {
+					sw = false;
+				}else {
+					System.out.println("값을 다시 입력해 주세요 !");
+					sw = true;
+				}
+				
+			}
 			//선택한 종류의 타입이름을 가져옴
 			String type = list.get(select-1).getType();
 			//type= Ex)과학

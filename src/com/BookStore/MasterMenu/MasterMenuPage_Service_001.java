@@ -16,13 +16,13 @@ public class MasterMenuPage_Service_001 {
 	
 	//모든 유저를 출력해주마
 	public void ViewAllUser() {
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		ConsoleView cv = new ConsoleView();
+		cv.JumpConsole();
 		List<User> list = MasterMenuPage_DAO_001.getInstance().ViewAllUser();
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println("[ "+(i+1)+" ] "+"  ===================================================================\n"+list.get(i).toStringList());
+			System.out.println("[ "+(i+1)+" ] "+"  ====================================================================================\n"+list.get(i).toStringList());
 		}
 	}
-	
 	
 	//유저 삭제
 	public void DeleteUser() {
@@ -52,7 +52,7 @@ public class MasterMenuPage_Service_001 {
 		MasterMenuPage mp = new MasterMenuPage();
 		ConsoleView cv = new ConsoleView();
 		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		cv.JumpConsole();
 		System.out.println("==========================================================================\n\n");
 		System.out.println("        원하는 유저의 [이름, 고유번호, 핸드폰번호, 이메일, ID] 중 키워드를 입력하십시오.");
 		System.out.println("        키워드의 중복된 유저들의 데이터가 출력됩니다.\n\n");
@@ -68,13 +68,12 @@ public class MasterMenuPage_Service_001 {
 		}catch(NumberFormatException e) {
 			
 		}
-		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		cv.JumpConsole();
 		//검색된 리스트의 배열을 담음
 		List<User> list = MasterMenuPage_DAO_001.getInstance().UserSearch(searchString, searchInt);
-		System.out.println("값 출력전 콘솔 !");
 		
 		//검색된 배열을 출력함
+		System.out.println(list.size()+"개 가 검색되었습니다 ↓\n");
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println("[ "+(i+1)+" ] "+"  ===================================================================\n"+list.get(i).toStringList());
 		}
@@ -87,17 +86,18 @@ public class MasterMenuPage_Service_001 {
 			//유저의 검색결과가 있으면, 수정하는 곳으로 간다.
 			mp.UserSearchAndEdit(list);
 		}
-		
 	}
 	
 	////계정의 int형타입 정보를 수정
-	public void ChangeDataInt(String Type, int UNumber, int newData) {
+	public void ChangeDataInt(String Type, int newData, int UNumber) {
+		ConsoleView cv = new ConsoleView();
 		int result = MasterMenuPage_DAO_001.getInstance().ChangeDateInt(Type, newData, UNumber);
 		if(result > 0) {
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			cv.JumpConsole();
 			System.out.println("수정완료 !");
 			
 		}else {
+			cv.JumpConsole();
 			System.out.println("데이터 수정실패 !");
 		}
 		 
@@ -105,16 +105,18 @@ public class MasterMenuPage_Service_001 {
 	
 	//계정의 문자열타입 정보를 수정
 	public boolean ChangeDateString(String Type, int UNumber, String newData) {
+		ConsoleView cv = new ConsoleView();
+		
 		int result = MasterMenuPage_DAO_001.getInstance().ChangeDateString(Type, newData, UNumber);
 		if(result > 0) {
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			cv.JumpConsole();
 			System.out.println("수정완료 !");
 			return true;
 		}else {
+			cv.JumpConsole();
 			System.out.println("데이터 수정실패 !");
 			return false;
 		}
-		 
 	}
 	
 	//핸드폰 번호 변경전 데이터 비교
@@ -163,7 +165,6 @@ public class MasterMenuPage_Service_001 {
 		boolean sw = true;
 		
 		do{
-			
 			List<User> list = UserDAO.getInstance().SignUpCompare();
 			boolean[] swarr = new boolean[list.size()];
 			String value = sc.nextLine();
@@ -226,22 +227,19 @@ public class MasterMenuPage_Service_001 {
 	
 	//관리자 페이지용 book리스트
 	public void getBookList() {
+		ConsoleView cv = new ConsoleView();
 		BookDAO instance = new BookDAO();
-		
-		
 		
 			//전체 책을 불러왔음
 			List<Book> list = instance.getBookList();
 			
-			
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			System.out.println("\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖");
-			System.out.println("\n\t\t📕📕📕교보문고 BOOK LIST📕📕📕\n");
-			System.out.println("\t🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖🔖\n");
+			cv.JumpConsole();
+			System.out.println("\t▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦");
+			System.out.println("\n\t\t◆◆◆교보문고 BOOK LIST◆◆◆\n");
+			System.out.println("\t▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦▦\n");
 			for (int i = 0; i < list.size(); i++) {
 				System.out.println("[ "+(i+1)+" ] "+list.get(i).toString());
 			}
-
 	}
 	
 	//유저 삭제
@@ -277,9 +275,8 @@ public class MasterMenuPage_Service_001 {
 		String searchString = "";		//데이터 입력받음.
 		int searchInt = -1;//문자열이 숫자인경우, int형식으로도 바꿈
 
-		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		while(sw) {
+		cv.JumpConsole();
 		System.out.println("==========================================================================\n\n");
 		System.out.println("        원하는 [도서]의 [제목, 고유번호, 저자이름, 장르] 중 키워드를 입력하십시오.");
 		System.out.println("        키워드의 중복된 유저들의 데이터가 출력됩니다 :D\n");
@@ -293,15 +290,15 @@ public class MasterMenuPage_Service_001 {
 				try {
 					searchInt = Integer.parseInt(searchString);
 				}catch(Exception e) {
+					System.out.println("문자값 일수 도 있습니다. ! ");
 					cv.JumpConsole();
-					System.out.println("문자값 일수 도 있습니다.0 ! ");
 				}
 				sw = false;
 			}catch(Exception e) {
 				
 			}
 		}
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		cv.JumpConsole();
 		//검색된 리스트의 배열을 담음
 		List<Book> list = MasterMenuPage_DAO_001.getInstance().BookSearch(searchString, searchInt);
 		
@@ -320,7 +317,6 @@ public class MasterMenuPage_Service_001 {
 			//유저의 검색결과가 있으면, 수정하는 곳으로 간다.
 			mp.BookSearchAndEdit(list);
 		}
-		
 	}
 	
 ////도서의 int형타입 정보를 수정
@@ -346,25 +342,35 @@ public class MasterMenuPage_Service_001 {
 		if(result > 0) {
 			cv.BookRegistration();
 			cv.JumpConsole();
-			
 		}else {
 			System.out.println("데이터 수정실패 !");
 		}
 		return result;
 	}
 	
-	
-	
 	//판매기록 조회
 	public void SalesList()	{
 		ConsoleView cv = new ConsoleView();
+		boolean sw = true;
 		
 		cv.JumpConsole();
 		List<Book> list = MasterMenuPage_DAO_001.getInstance().SalesList();
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println("[ "+(i+1)+" ] "+"  ===================================================================\n"+list.get(i).toStringSalesList());
 		}
+		System.out.println("뒤로 가려면, \"0\" 을 입력하십시오.");
+		
+		while(sw) {
+			
+			switch(sc.nextLine()) {
+			case "0":
+				sw = false;
+				break;
+			default : 
+				System.out.println("값을 잘못 입력했습니다.");
+				break;
+			}
+		}
+		
 	}
-	
-	
 }

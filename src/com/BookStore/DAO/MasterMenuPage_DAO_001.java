@@ -131,6 +131,7 @@ public class MasterMenuPage_DAO_001 extends DAO {
 			pstmt.setInt(1, newDate);
 			pstmt.setInt(2, number);
 			result = pstmt.executeUpdate();
+			System.out.println(type +""+ newDate +""+ number);
 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -221,8 +222,6 @@ public class MasterMenuPage_DAO_001 extends DAO {
 			pstmt.setString(4, searchString);
 
 			rs = pstmt.executeQuery();
-//				stmt = conn.createStatement();
-//				rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				mem = new Book();
 				mem.setBookNumber(rs.getInt("book_number"));
@@ -250,9 +249,6 @@ public class MasterMenuPage_DAO_001 extends DAO {
 			conn();
 			String sql = "select * from BookStore_UserBookList order by book_number";
 								
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, UserService.userInfo.getUserNumber());
-//			rs = pstmt.executeQuery();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {

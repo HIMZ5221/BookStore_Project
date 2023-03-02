@@ -22,13 +22,12 @@ public class UserService{
 		MainMenuPage mainM = new MainMenuPage();
 		ConsoleView cv = new ConsoleView();
 
-
 		User user = null;
 		System.out.println("ID를 입력하세요 >");
 		String userId = sc.nextLine();
 		System.out.println("PW를 입력하세요 >");
 		String userPw = sc.nextLine();
-		System.out.print("로그인 중.");
+		System.out.print("로그인 중 ■");
 		cv.LoginLoading();
 		
 		//UserDAO 로 만든 객체만 사용 가능하다!!!
@@ -38,13 +37,11 @@ public class UserService{
 			System.out.println("기존 로그인된 객체가 존재합니다.\n프로그램에 문제가 있으므로, 즉각 관리자에게 문의하십시오.");
 		}
 		if(user != null) {
-			System.out.println("로그인 완료 !");
+			System.out.println(" 로그인 완료 !");
 			//데이터를 불러,필드에 재정의된 비번과, 유저가 직접입력한 비번을 조회.
 			if(user.getUserPw().equals(userPw)) {
 				cv.JumpConsole();
 				System.out.println("\t\t\t로그인에 성공하였습니다 !");
-				System.out.println("\t\t\t\""+user.getUserName() + "\" 님 환영합니다.🎉🎉");
-				System.out.println("\n\n\n");
 				//여기서 user의 정보를 유지할 수 있을듯!
 				userInfo = user;
 				mainM.MainMenu();
@@ -58,9 +55,6 @@ public class UserService{
 		}
 	}
 	
-	
-	
-	//회원가입
 	//회원가입
 	//회원가입에서는 userDao클래스의 SignUp/SignUpCompare 메소드를 사용한다.
 	public void SignUp() {
@@ -108,7 +102,6 @@ public class UserService{
 			String pw1 = sc.nextLine();
 			System.out.println("\n비밀번호를 한번 더 입력하세요 ↓");
 			String pw2 = sc.nextLine();
-			System.out.println(pw1 + pw2);
 			if(pw1.equals(pw2)) {
 				user.setUserPw(pw1);
 				System.out.println("\n비밀번호가 일치합니다 !");
@@ -116,7 +109,6 @@ public class UserService{
 			}else {
 				System.out.println("\n비밀번호가 서로 다릅니다 !");
 			}
-			
 		}
 //==============================================================
 		System.out.println("\n생일을 입력하세요 \n 예시). 19980305 ↓");
@@ -183,7 +175,6 @@ public class UserService{
 		}while(sw);
 		user.setUserMail(userMail);
 		
-		
 		int result = UserDAO.getInstance().SignUp(user);
 		
 		if(result > 0 ) {
@@ -200,7 +191,6 @@ public class UserService{
 	public void MasterLogin() {
 		MasterMenuPage masterM = new MasterMenuPage();
 		ConsoleView cv = new ConsoleView();
-
 
 		User user = null;
 		System.out.println("ID를 입력하세요 ↓");
@@ -227,83 +217,8 @@ public class UserService{
 				System.out.println("비밀번호가 틀립니다 !!");
 			}
 		}else {
+			cv.JumpConsole();
 			System.out.println("없는 계정입니다 ! ");
 		}
 	}
-	
-	//회원탈퇴
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

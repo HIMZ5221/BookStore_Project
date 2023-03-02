@@ -3,17 +3,7 @@ package com.BookStore.Service;
 import java.sql.Date;
 
 public class User {
-//	user_number number(5) Primary Key,
-//	user_name varchar2(25) not null unique,
-//	user_id varchar2(15) not null unique,
-//	user_pw varchar2(15) not null,
-//	user_birth date,
-//	hiredate date default (sysdate),
-//	user_tel number(15),
-//	user_age number(3) not null,
-//	user_mail varchar2(30) unique,
-//	user_money number(10) Default (0)
-//	
+	
 	private int userNumber;
 	private String userName;
 	private String userId;
@@ -94,14 +84,14 @@ public class User {
 
 	@Override
 	public String toString() { //개인정보페이지
-		return "\t\t계정고유번호 : \t" + userNumber + "\n\t\t이름 : \t\t" + userName + "\n\t\t계정ID : \t\t" + userId
+		return "\t\t계정고유번호 : \t" + userNumber + "\n\t\t이름 : \t\t" + userName + "\n\t\t계정ID : \t" + userId
 				+ "\n\t\t생일 : \t\t" + userBirth + "\n\t\t전화번호 : \t" + userTel + "\n\t\t나이 : \t\t" + userAge
-				+ "\n\t\tMyEmail : \t" + userMail + "\n\t\t가입일 : \t\t" + hiredate + "\n\t\t보유머니 : \t" + userMoney+"캐쉬";
+				+ "\n\t\tMyEmail : \t" + userMail + "\n\t\t가입일 : \t" + hiredate + "\n\t\t보유머니 : \t" + userMoney+"캐쉬";
 	}
 	public String toStringList() {
-		return  "\n\t계정고유번호 : \t" + userNumber + "\t이름 : \t" + userName + "\t계정ID : \t" + userId
-				+ "\n\t생일 : \t" + userBirth + "\t전화번호 : \t" + userTel + "\n\t나이 : \t" + userAge
-				+ "\tMyEmail : \t" + userMail + "\t가입일 : \t" + hiredate + "\n\t보유머니 : \t" + userMoney+"캐쉬\n"
+		return  "\n\t계정고유번호 : \t" + userNumber + "\t| 이름 : \t" + userName + "\t| 계정ID : \t" + userId
+				+ "\n\t전화번호 : \t" + userTel + "\t 나이 : \t" + userAge
+				+ "\n\tMyEmail : \t" + userMail + "\t| 가입일 : \t" + hiredate+"캐쉬"+"\t 생일 : \t" + userBirth + "\n\t보유머니 : \t" + userMoney
 				;	}
 
 	

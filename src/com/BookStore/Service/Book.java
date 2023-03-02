@@ -3,12 +3,6 @@ package com.BookStore.Service;
 import java.sql.Date;
 
 public class Book {
-//	BOOK_NUMBER NOT NULL NUMBER(5)    
-//	BOOK_NAME   NOT NULL VARCHAR2(38) 
-//	BOOK_STOCK           NUMBER(5)    
-//	BOOK_PRICE  NOT NULL NUMBER(10)   
-//	BOOK_TYPE            VARCHAR2(20) 
-//	BOOK_AUTHOR          VARCHAR2(20)
 	
 	private int bookNumber;
 	private	String bookName;
@@ -24,9 +18,6 @@ public class Book {
 	private String userName;
 	
 	
-
-
-
 	public int getBookNumber() {
 		return bookNumber;
 	}
@@ -91,14 +82,18 @@ public class Book {
 	
 	@Override
 	public String toString() { //모든 list 출력
-		return "\tISBN : " + bookNumber + "\t책이름 : " + "\""+bookName+"\""
-				+ "\t\t| 가격 : " + Price + "\t카테고리 : " + type + "\t저자 : " + author + "\t재고 : " + bookStock;
+		return "\tISBN : " + bookNumber	+ "\t| 가격 : " + Price + "\t카테고리 : "
+				+ type +" | " + "\t\t책이름 : " + "\""+bookName+"\"";
 	}
+//	public String toString() { //모든 list 출력
+//		return "\tISBN : " + bookNumber + "\t책이름 : " + "\""+bookName+"\""
+//				+ "\t\t| 가격 : " + Price + "\t카테고리 : " + type + "\t저자 : " + author + "\t재고 : " + bookStock;
+//	}
 	
 	
 	public String toStringIntroduce() {
-		return "\tISBN : " + bookNumber + "\n\t책이름 : " + "\""+bookName+"\""
-				+ "\n\t가격 : " + Price + "\n\t카테고리 : " + type + "\n\t저자 : " + author + "\n\t재고 : " + bookStock;
+		return "\t\tISBN : " + bookNumber + "\n\t\t책이름 : " + "\""+bookName+"\""
+				+ "\n\t\t가격 : " + Price + "\n\t\t카테고리 : " + type + "\n\t\t저자 : " + author + "\n\t\t재고 : " + bookStock;
 	}
 	
 	

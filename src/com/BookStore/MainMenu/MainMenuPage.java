@@ -23,14 +23,15 @@ public class MainMenuPage {
 			while (run) {
 				//첫 콘솔 출력 창이다.. 이 while문에서 모든게 반복되어야만 하며, 최후방 콘솔지역임.
 				//유저객체에 등록된 데이터는 로그아웃으로 삭제한다..
+				System.out.println("\t\t\t\""+UserService.userInfo.getUserName() + "\" 님 환영합니다.♤♠\n\n\n");
 				System.out.println("\t\t메인 페이지 입니다. 원하는 서비스를 선택하세요. \n\n");
 				System.out.print("\t\tLogin : "+UserService.userInfo.getUserName());
 				System.out.print("\tID : "+UserService.userInfo.getUserId());
-				System.out.println("\tMONEY : "+UserService.userInfo.getUserMoney());
+				System.out.println("\t  MONEY : "+UserService.userInfo.getUserMoney()+"캐쉬");
 				System.out.println();
-				System.out.println("\t==============================================================");
+				System.out.println("\t===============================================================================");
 				System.out.println("\t===1.개인정보 조회 | 2.교보문고 입장 | 3.중고장터(서비스준비중) | 0.로그아웃===");
-				System.out.println("\t==============================================================");
+				System.out.println("\t===============================================================================");
 				System.out.println("\n이동할 메뉴 번호를 입력하세요 ↓\n\n");
 				menu = sc.nextLine();
 				
@@ -46,7 +47,8 @@ public class MainMenuPage {
 				case "3" : 
 					//3.중고장터
 					//안해 !@!!!
-					System.out.println("중고장터는 서비스준비중 입니다.");
+					cv.JumpConsole();
+					System.out.println("중고장터는 서비스준비중 입니다.\n\n");
 					break;
 				case "0" : 
 					//4.로그아웃
@@ -54,7 +56,7 @@ public class MainMenuPage {
 					//로그아웃 전 객체에 등록된 고객데이터 삭제.
 					UserService.userInfo = null;
 					cv.JumpConsole();
-					System.out.println("유저의 객체값이 null 로 변경되었습니다 !!!!!!!!");
+					System.out.println("유저의 객체값은 null 입니다.");
 					System.out.println("다시 로그인 해주세요\n\n");
 					break;
 					

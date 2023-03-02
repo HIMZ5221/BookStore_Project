@@ -44,11 +44,7 @@ public class UserDAO extends DAO{
 				mem.setUserAge(rs.getInt("user_age"));
 				mem.setUserMail(rs.getString("user_mail"));
 				mem.setUserMoney(rs.getInt("user_money"));
-//				
-//				mem.setUserId(rs.getString("user_id"));
-//				mem.setUserPw(rs.getString("user_pw"));
-//				mem.setUserName(rs.getString("user_name"));
-//				
+			
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -132,11 +128,6 @@ public class UserDAO extends DAO{
 				mem.setUserAge(rs.getInt("user_age"));
 				mem.setUserMail(rs.getString("user_mail"));
 				mem.setUserMoney(rs.getInt("user_money"));
-				
-//				mem = new User();
-//				mem.setUserId(rs.getString("user_id"));
-//				mem.setUserPw(rs.getString("user_pw"));
-//				mem.setUserName(rs.getString("user_name"));
 				
 			}
 		}catch(Exception e) {

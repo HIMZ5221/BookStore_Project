@@ -1,8 +1,10 @@
 package com.BookStore.Service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.BookStore.DAO.MainMenuPage_DAO_001;
+import com.BookStore.DAO.UserDAO;
 import com.ConsoleView.ConsoleView;
 
 public class MainMenuPage_Service_001 {
@@ -17,15 +19,13 @@ public class MainMenuPage_Service_001 {
 		String menu = "";
 		
 		cv.JumpConsole();
-		System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞");
-		System.out.println("\t\t\t===개인정보 페이지===");
-		System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞\n");
+		cv.UserInfoConsole();
 		System.out.println(UserService.userInfo.toString());
 		System.out.println();
 		while (run) {
-			System.out.println("\t=============================================================");
+			System.out.println("\t=====================================================================");
 			System.out.println("\t===1.비밀번호 변경 | 2.tel변경 | 3.Email변경 | 4.캐쉬충전 | 0.뒤로가기===");
-			System.out.println("\t=============================================================");
+			System.out.println("\t=====================================================================");
 			System.out.println("\n이동할 메뉴 번호를 입력하세요 ↓\n\n");
 			menu = sc.nextLine();
 			switch (menu) {
@@ -56,7 +56,6 @@ public class MainMenuPage_Service_001 {
 				break;
 			}
 		}
-		
 	}
 	
 	//비밀번호 변경..
@@ -94,11 +93,37 @@ public class MainMenuPage_Service_001 {
 	//tel 변경...
 	public void ChangeTel() {
 		ConsoleView cv = new ConsoleView();
+		boolean sw = true;
 		
 		int number = UserService.userInfo.getUserNumber();
 		System.out.println("현재 전화번호 : \t" + UserService.userInfo.getUserTel());
 		System.out.println("변경할 전화번호를 입력하세요 !");
-		String newTel = sc.nextLine();
+		String newTel = "";
+		
+		do{
+			List<User> list = UserDAO.getInstance().SignUpCompare();
+			boolean[] swarr = new boolean[list.size()];
+			String value = sc.nextLine();
+			//동일한 데이터가 존재 할 시, 배열에 true가 들어가게 됨.
+			for(int i=0; i<list.size(); i++) {
+				if(list.get(i).getUserTel().equals(value)) {
+					System.out.println("\n이미 존재하는 전화번호 입니다. 다시 입력하세요 ↓");
+					swarr[i] = true;
+				}else {
+					swarr[i] = false;
+					newTel=value;
+				}
+			}
+			sw = false;
+			//배열에 true가 없을경우 반복문을 빠져나옴
+			for(int i=0; i<swarr.length;i++) {
+				if(swarr[i]==true) {
+					sw = true;
+				}
+			}
+		}while(sw);
+		
+		//이메일 변경아님, 전달값에 따라 변경값 달라짐.
 		int result = MainMenuPage_DAO_001.getInstance().ChangeEmail("user_Tel", newTel, number);
 		if(result > 0 ) {
 			UserService.userInfo.setUserTel(newTel);
@@ -117,11 +142,36 @@ public class MainMenuPage_Service_001 {
 	//mail 변경...
 	public void ChangeEmail() {
 		ConsoleView cv = new ConsoleView();
+		boolean sw = true;
 		
 		int number = UserService.userInfo.getUserNumber();
 		System.out.println("현재 EMAIl : \t" + UserService.userInfo.getUserMail());
 		System.out.println("변경할 EMAIL을 입력하세요 !");
-		String newMail = sc.nextLine();
+		String newMail = "";
+		
+		do{	
+			List<User> list = UserDAO.getInstance().SignUpCompare();
+			boolean[] swarr = new boolean[list.size()];
+			String value = sc.nextLine();
+			//동일한 데이터가 존재 할 시, 배열에 true가 들어가게 됨.
+			for(int i=0; i<list.size(); i++) {
+				if(list.get(i).getUserMail().equals(value)) {
+					System.out.println("\n이미 존재하는 EMAIL 입니다. 다시 입력하세요 ↓");
+					swarr[i] = true;
+				}else {
+					swarr[i] = false;
+					newMail=value;
+				}
+			}
+			sw = false;
+			//배열에 true가 없을경우 반복문을 빠져나옴
+			for(int i=0; i<swarr.length;i++) {
+				if(swarr[i]==true) {
+					sw = true;
+				}
+			}
+		}while(sw);
+		
 		int result = MainMenuPage_DAO_001.getInstance().ChangeEmail("user_mail", newMail, number);
 		if(result > 0 ) {
 			UserService.userInfo.setUserMail(newMail);
@@ -162,9 +212,9 @@ public class MainMenuPage_Service_001 {
 		if(result > 0 ) {
 			cv.JumpConsole();
 			cv.UserInfoConsole();
+			UserService.userInfo.setUserMoney(nowCash + plusCash);
 			System.out.println(UserService.userInfo.toString());
 			System.out.println("충전완료 !");
-			UserService.userInfo.setUserMoney(nowCash + plusCash);
 		}else {
 			cv.JumpConsole();
 			cv.UserInfoConsole();

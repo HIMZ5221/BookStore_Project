@@ -10,11 +10,10 @@ public class ConsoleView {
 	}
 	
 	public void UserInfoConsole() {
-		System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞");
-		System.out.println("\t\t\t===개인정보 페이지===");
-		System.out.println("\t\t🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞🎞\n");
+		System.out.println("\t\t■■■■■■■■■■■■■■■■■■\n");
+		System.out.println("\t\t\t===개인정보 페이지===\n");
+		System.out.println("\t\t■■■■■■■■■■■■■■■■■■\n");
 	}
-	
 	
 	//로그인중 메뉴 ! 간편화 실패 !!
 	//일반회원 로그인 | 마스터 로그인
@@ -60,22 +59,20 @@ public class ConsoleView {
 				System.out.println(dateInt2);
 			}
 			
-			
 			if(Time == dateInt2) {
 				//원하는 시간 타임 설정
 				Time = Time + 300;
 				//점 두개를 위해서.. ! ㅋㅋㅋ
-				System.out.print("..");
+				System.out.print("■■");
 				count++;
 				if(count == 5) {
 					sw = false;
 				}
-				
 			}
 		}
 	}
 	
-public void RegistrationSuccess() {
+	public void RegistrationSuccess() {
 		
 		SimpleDateFormat sdf1 = new SimpleDateFormat("ssSSS"); 
 		Date now1 = new Date();
@@ -117,7 +114,6 @@ public void RegistrationSuccess() {
 				System.out.println(dateInt2);
 			}
 			
-			
 			if(Time == dateInt2) {
 				//원하는 시간 타임 설정
 				Time = Time + 500;
@@ -125,31 +121,31 @@ public void RegistrationSuccess() {
 				
 				if(botten == true) {
 					JumpConsole();
-					System.out.println("\t\t😵😵😵😵😵😵😵😵😵😵");
-					System.out.println("\t\t▨▨▤▤▤▤▤▤▤▤▤▤▤▤▧▧ ");
-					System.out.println("\t\t▨☆☆☆☆☆☆☆☆☆☆☆☆☆☆▧  ");
+					//System.out.println("\t\t😵😵😵😵😵😵😵😵😵😵");
+					System.out.println("\t\t▨▨▤▤▤▤▤▤▧▧ ");
+					System.out.println("\t\t▨☆☆☆☆☆☆☆☆▧  ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
-					System.out.println("\t\t▥☆ 회원가입 완료!!\t☆▥ ");
+					System.out.println("\t\t▥☆회원가입 완료☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
-					System.out.println("\t\t▧☆☆☆☆☆☆☆☆☆☆☆☆☆☆▨  ");
-					System.out.println("\t\t▧▧▤▤▤▤▤▤▤▤▤▤▤▤▨▨");
+					System.out.println("\t\t▧☆☆☆☆☆☆☆☆▨  ");
+					System.out.println("\t\t▧▧▤▤▤▤▤▤▨▨");
 					System.out.println("\n\n");
 					botten = false ; 
 				}else if(botten == false) {
 					
 					JumpConsole();
-					System.out.println("\t\t😇😇😇😇😇😇😇😇😇😇");
-					System.out.println("\t\t▨▨▤▤▤▤▤▤▤▤▤▤▤▤▧▧ ");
-					System.out.println("\t\t▧★★★★★★★★★★★★★★▨  ");
+					//System.out.println("\t\t😇😇😇😇😇😇😇😇😇😇");
+					System.out.println("\t\t▨▨▤▤▤▤▤▤▧▧ ");
+					System.out.println("\t\t▧★★★★★★★★▨  ");
 					System.out.println("\t\t▥★           \t★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
-					System.out.println("\t\t▥★ 회원가입 완료!!\t★▥ ");
+					System.out.println("\t\t▥★회원가입 완료★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
-					System.out.println("\t\t▧★★★★★★★★★★★★★★▨  ");
-					System.out.println("\t\t▧▧▤▤▤▤▤▤▤▤▤▤▤▤▨▨");
+					System.out.println("\t\t▧★★★★★★★★▨  ");
+					System.out.println("\t\t▧▧▤▤▤▤▤▤▨▨");
 					System.out.println("\n\n");
 					
 					botten = true;
@@ -158,7 +154,6 @@ public void RegistrationSuccess() {
 				if(count == 10) {
 					sw = false;
 				}
-				
 			}
 		}
 	}
@@ -205,7 +200,6 @@ public void RegistrationSuccess() {
 				System.out.println(dateInt2);
 			}
 			
-			
 			if(Time == dateInt2) {
 				//원하는 시간 타임 설정
 				Time = Time + 500;
@@ -213,31 +207,29 @@ public void RegistrationSuccess() {
 				
 				if(botten == true) {
 					JumpConsole();
-					System.out.println("\t\t😵😵😵😵😵😵😵😵😵😵");
-					System.out.println("\t\t▨▨▤▤▤▤▤▤▤▤▤▤▤▤▧▧ ");
-					System.out.println("\t\t▨☆☆☆☆☆☆☆☆☆☆☆☆☆☆▧  ");
+					System.out.println("\t\t▨▨▤▤▤▤▤▤▧▧ ");
+					System.out.println("\t\t▨☆☆☆☆☆☆☆☆▧  ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
-					System.out.println("\t\t▥☆   구매완료!!!\t☆▥ ");
+					System.out.println("\t\t▥☆ 구매완료!!!☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
-					System.out.println("\t\t▧☆☆☆☆☆☆☆☆☆☆☆☆☆☆▨  ");
-					System.out.println("\t\t▧▧▤▤▤▤▤▤▤▤▤▤▤▤▨▨");
+					System.out.println("\t\t▧☆☆☆☆☆☆☆☆▨  ");
+					System.out.println("\t\t▧▧▤▤▤▤▤▤▨▨");
 					System.out.println("\n\n");
 					botten = false ; 
 				}else if(botten == false) {
 					
 					JumpConsole();
-					System.out.println("\t\t😇😇😇😇😇😇😇😇😇😇");
-					System.out.println("\t\t▨▨▤▤▤▤▤▤▤▤▤▤▤▤▧▧ ");
-					System.out.println("\t\t▧★★★★★★★★★★★★★★▨  ");
+					System.out.println("\t\t▨▨▤▤▤▤▤▤▧▧ ");
+					System.out.println("\t\t▧★★★★★★★★▨  ");
 					System.out.println("\t\t▥★           \t★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
-					System.out.println("\t\t▥★   구매완료!!!\t★▥ ");
+					System.out.println("\t\t▥★ 구매완료!!!★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
-					System.out.println("\t\t▧★★★★★★★★★★★★★★▨  ");
-					System.out.println("\t\t▧▧▤▤▤▤▤▤▤▤▤▤▤▤▨▨");
+					System.out.println("\t\t▧★★★★★★★★▨  ");
+					System.out.println("\t\t▧▧▤▤▤▤▤▤▨▨");
 					System.out.println("\n\n");
 					
 					botten = true;
@@ -246,7 +238,6 @@ public void RegistrationSuccess() {
 				if(count == 6) {
 					sw = false;
 				}
-				
 			}
 		}
 	}
@@ -295,7 +286,6 @@ public void RegistrationSuccess() {
 				System.out.println(dateInt2);
 			}
 			
-			
 			if(Time == dateInt2) {
 				//원하는 시간 타임 설정
 				Time = Time + 500;
@@ -303,31 +293,31 @@ public void RegistrationSuccess() {
 				
 				if(botten == true) {
 					JumpConsole();
-					System.out.println("\t\t😵😵😵😵😵😵😵😵😵😵");
-					System.out.println("\t\t▨▨▤▤▤▤▤▤▤▤▤▤▤▤▧▧ ");
-					System.out.println("\t\t▨☆☆☆☆☆☆☆☆☆☆☆☆☆☆▧  ");
+					//System.out.println("\t\t😵😵😵😵😵😵😵😵😵😵");
+					System.out.println("\t\t▨▨▤▤▤▤▤▤▧▧ ");
+					System.out.println("\t\t▨☆☆☆☆☆☆☆☆▧  ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
-					System.out.println("\t\t▥☆ 업데이트 성공!!\t☆▥ ");
+					System.out.println("\t\t▥☆업데이트 성공☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
-					System.out.println("\t\t▧☆☆☆☆☆☆☆☆☆☆☆☆☆☆▨  ");
-					System.out.println("\t\t▧▧▤▤▤▤▤▤▤▤▤▤▤▤▨▨");
+					System.out.println("\t\t▧☆☆☆☆☆☆☆☆▨  ");
+					System.out.println("\t\t▧▧▤▤▤▤▤▤▨▨");
 					System.out.println("\n\n");
 					botten = false ; 
 				}else if(botten == false) {
 					
 					JumpConsole();
-					System.out.println("\t\t😇😇😇😇😇😇😇😇😇😇");
-					System.out.println("\t\t▨▨▤▤▤▤▤▤▤▤▤▤▤▤▧▧ ");
-					System.out.println("\t\t▧★★★★★★★★★★★★★★▨  ");
+					//System.out.println("\t\t😇😇😇😇😇😇😇😇😇😇");
+					System.out.println("\t\t▨▨▤▤▤▤▤▤▧▧ ");
+					System.out.println("\t\t▧★★★★★★★★▨  ");
 					System.out.println("\t\t▥★           \t★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
-					System.out.println("\t\t▥★ 업데이트 성공!!\t★▥ ");
+					System.out.println("\t\t▥★업데이트 성공★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
-					System.out.println("\t\t▧★★★★★★★★★★★★★★▨  ");
-					System.out.println("\t\t▧▧▤▤▤▤▤▤▤▤▤▤▤▤▨▨");
+					System.out.println("\t\t▧★★★★★★★★▨  ");
+					System.out.println("\t\t▧▧▤▤▤▤▤▤▨▨");
 					System.out.println("\n\n");
 					
 					botten = true;
@@ -336,7 +326,6 @@ public void RegistrationSuccess() {
 				if(count == 6) {
 					sw = false;
 				}
-				
 			}
 		}
 	}
@@ -384,7 +373,6 @@ public void RegistrationSuccess() {
 				System.out.println(dateInt2);
 			}
 			
-			
 			if(Time == dateInt2) {
 				//원하는 시간 타임 설정
 				Time = Time + 500;
@@ -392,31 +380,29 @@ public void RegistrationSuccess() {
 				
 				if(botten == true) {
 					JumpConsole();
-					System.out.println("\t\t😡😡😡😡😡😡😡😡😡😡");
-					System.out.println("\t\t▨▨▤▤▤▤▤▤▤▤▤▤▤▤▧▧ ");
-					System.out.println("\t\t▨☆☆☆☆☆☆☆☆☆☆☆☆☆☆▧  ");
+					System.out.println("\t\t▨▨▤▤▤▤▤▤▧▧ ");
+					System.out.println("\t\t▨☆☆☆☆☆☆☆☆▧  ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
-					System.out.println("\t\t▥☆  데이터 없음!!!\t☆▥ ");
+					System.out.println("\t\t▥☆데이터 없음!☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
 					System.out.println("\t\t▥☆           \t☆▥ ");
-					System.out.println("\t\t▧☆☆☆☆☆☆☆☆☆☆☆☆☆☆▨  ");
-					System.out.println("\t\t▧▧▤▤▤▤▤▤▤▤▤▤▤▤▨▨");
+					System.out.println("\t\t▧☆☆☆☆☆☆☆☆▨  ");
+					System.out.println("\t\t▧▧▤▤▤▤▤▤▨▨");
 					System.out.println("\n\n");
 					botten = false ; 
 				}else if(botten == false) {
 					
 					JumpConsole();
-					System.out.println("\t\t😭😭😭😭😭😭😭😭😭😭");
-					System.out.println("\t\t▨▨▤▤▤▤▤▤▤▤▤▤▤▤▧▧ ");
-					System.out.println("\t\t▧★★★★★★★★★★★★★★▨  ");
+					System.out.println("\t\t▨▨▤▤▤▤▤▤▧▧ ");
+					System.out.println("\t\t▧★★★★★★★★▨  ");
 					System.out.println("\t\t▥★           \t★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
-					System.out.println("\t\t▥★  데이터 없음!!!\t★▥ ");
+					System.out.println("\t\t▥★데이터 없음!★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
 					System.out.println("\t\t▥★           \t★▥ ");
-					System.out.println("\t\t▧★★★★★★★★★★★★★★▨  ");
-					System.out.println("\t\t▧▧▤▤▤▤▤▤▤▤▤▤▤▤▨▨");
+					System.out.println("\t\t▧★★★★★★★★▨  ");
+					System.out.println("\t\t▧▧▤▤▤▤▤▤▨▨");
 					System.out.println("\n\n");
 					
 					botten = true;
@@ -425,12 +411,7 @@ public void RegistrationSuccess() {
 				if(count == 6) {
 					sw = false;
 				}
-				
 			}
 		}
 	}
-	
-	
-	
-	
 }
